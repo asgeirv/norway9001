@@ -123,8 +123,6 @@ public class Main extends Application
         continueButton = new SpaceButton("Continue Game");
         continueButton.setPrefWidth(BUTTON_WIDTH);
         continueButton.setDisable(true);
-        if (levelTracker.getCurrentLevel() <= levels.getNumLevels())
-            levelTracker.setCurrentLevel(1);
         continueButton.setOnAction(event -> continueGame(stage));
 
         SpaceButton newGameButton = new SpaceButton("New Game");
@@ -158,18 +156,11 @@ public class Main extends Application
         mainMenuPane.setAlignment(copyrightLabel, Pos.BOTTOM_RIGHT);
         mainMenu = new Scene(mainMenuPane);
         mainMenu.setCursor(Cursor.CROSSHAIR);
-        updateMainMenu();
     }
 
     private void updateMainMenu()
     {
         loadingLabel.setVisible(false);
-        if (levelTracker.getCurrentLevel() <= levels.getNumLevels())
-        {
-            continueButton.setDisable(true);
-            levelTracker.setCurrentLevel(1);
-        }
-
         if (levelTracker.getCurrentLevel() > 1)
         {
             continueButton.setDisable(false);
