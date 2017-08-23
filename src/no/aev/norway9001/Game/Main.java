@@ -30,6 +30,7 @@ public class Main extends Application
 
     private Stage stage = new Stage();
     private FontsProvider fonts;
+    private ProgressTracker progress;
     private LevelTracker levelTracker;
     private Scene mainMenu;
     private SpaceButton continueButton;
@@ -44,7 +45,7 @@ public class Main extends Application
 
     public Main()
     {
-        ProgressTracker progress = new ProgressTracker();
+        progress = new ProgressTracker();
         levelTracker = progress.getProgress();
     }
 
@@ -132,7 +133,7 @@ public class Main extends Application
         SpaceButton exitButton = new SpaceButton("Exit");
         exitButton.setPrefWidth(BUTTON_WIDTH);
         exitButton.setCancelButton(true);
-        exitButton.setOnAction(event -> Platform.exit());
+        exitButton.setOnAction(event -> quit());
 
         loadingLabel = new Label("Loading...");
         loadingLabel.setVisible(false);
@@ -217,5 +218,11 @@ public class Main extends Application
         });
         stage.setScene(descScene);
         stage.setFullScreen(true);
+    }
+
+    private void quit()
+    {
+        progress.setProgress(levelTracker);
+        Platform.exit();
     }
 }

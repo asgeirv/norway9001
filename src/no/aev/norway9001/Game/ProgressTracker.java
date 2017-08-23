@@ -61,6 +61,8 @@ public class ProgressTracker
     {
         try (FileWriter output = new FileWriter("norway.9001", false))
         {
+            System.out.println("Writing file.");
+            System.out.format("Saving progress at level %d.", progress.getCurrentLevel());
             output.write("CURRENT_LEVEL=" + progress.getCurrentLevelAsString());
         }
         catch (IOException ioe)
