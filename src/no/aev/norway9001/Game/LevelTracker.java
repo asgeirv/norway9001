@@ -13,6 +13,11 @@ public class LevelTracker
         return currentLevel;
     }
 
+    public String getCurrentLevelAsString()
+    {
+        return String.valueOf(currentLevel);
+    }
+
     public void setCurrentLevel(int currentLevel)
     {
         this.currentLevel = currentLevel;

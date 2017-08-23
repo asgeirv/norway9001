@@ -37,7 +37,6 @@ public class Main extends Application
 
     private LevelsProvider levels;
 
-    private int startLevel; //for testing purposes
     private static final int BUTTON_WIDTH = 300;
     private static final int BUTTON_WIDTH_HOVER = 350;
     private static final String VERSION_MSG = "Norway 9001 Alpha";
@@ -45,7 +44,8 @@ public class Main extends Application
 
     public Main()
     {
-        levelTracker = new LevelTracker();
+        ProgressTracker progress = new ProgressTracker();
+        levelTracker = progress.getProgress();
     }
 
     public static void main(String[] args)
@@ -64,10 +64,8 @@ public class Main extends Application
             {
                 if (!arguments.equals(""))
                 {
-                    startLevel = Integer.parseInt(arguments);
+                    levelTracker.setCurrentLevel(Integer.parseInt(arguments));
                 }
-                else
-                    startLevel = 1;
             }
             catch (NumberFormatException e)
             {
@@ -76,9 +74,6 @@ public class Main extends Application
                 Platform.exit();
             }
         }
-        else
-            startLevel = 1;
-        levelTracker.setCurrentLevel(startLevel);
 
         fonts = new FontsProvider();
 
@@ -126,7 +121,8 @@ public class Main extends Application
 
         continueButton = new SpaceButton("Continue Game");
         continueButton.setPrefWidth(BUTTON_WIDTH);
-        continueButton.setDisable(true);
+        if (levelTracker.getCurrentLevel() == 1)
+            continueButton.setDisable(true);
         continueButton.setOnAction(event -> continueGame(stage));
 
         SpaceButton newGameButton = new SpaceButton("New Game");
@@ -175,7 +171,7 @@ public class Main extends Application
     private void startNewGame(Stage stage)
     {
         loadingLabel.setVisible(true);
-        Game game = new Game(stage, mainMenu, levels.getLevel(startLevel), levelTracker);
+        Game game = new Game(stage, mainMenu, levels.getLevel(1), levelTracker);
         showLevelDesc(stage, game);
     }
 
