@@ -38,7 +38,7 @@ public class ProgressTracker
             String line;
             line = br.readLine();
             String input[] = line.split("=");
-            System.out.println("Reading file.");
+            System.out.println("Reading save file...");
             progress.setCurrentLevel(Integer.parseInt(input[1]));
             System.out.println("Setting starting level to: " + progress.getCurrentLevelAsString());
         }
@@ -46,12 +46,13 @@ public class ProgressTracker
         {
             try
             {
+                System.out.println("Corrupt or non-existing save file. Creating new one.");
                 PrintWriter out = new PrintWriter("norway.9001");
                 out.println("CURRENT_LEVEL=1");
             }
             catch (FileNotFoundException innerError)
             {
-                innerError.printStackTrace();
+                System.out.println("Unable to read save file.");
             }
         }
         return progress;
@@ -61,13 +62,13 @@ public class ProgressTracker
     {
         try (FileWriter output = new FileWriter("norway.9001", false))
         {
-            System.out.println("Writing file.");
+            System.out.println("Writing save file...");
             System.out.format("Saving progress at level %d.", progress.getCurrentLevel());
             output.write("CURRENT_LEVEL=" + progress.getCurrentLevelAsString());
         }
         catch (IOException ioe)
         {
-            ioe.printStackTrace();
+            System.out.println("Unable to write save file. Check file and/or folder permissions.");
         }
     }
 }
