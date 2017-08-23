@@ -59,6 +59,11 @@ public class LevelsProvider
         return levels.get(levelNumber - 1);
     }
 
+    public int getNumLevels()
+    {
+        return levels.size();
+    }
+
     private void createLevel01()
     {
         String lvl01Desc = "The year is 9001.\n" +

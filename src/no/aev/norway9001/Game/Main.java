@@ -86,7 +86,7 @@ public class Main extends Application
         {
             if (newScene == mainMenu)
             {
-                updateMainMenu(stage);
+                updateMainMenu();
             }
         });
     }
@@ -122,8 +122,9 @@ public class Main extends Application
 
         continueButton = new SpaceButton("Continue Game");
         continueButton.setPrefWidth(BUTTON_WIDTH);
-        if (levelTracker.getCurrentLevel() == 1)
-            continueButton.setDisable(true);
+        continueButton.setDisable(true);
+        if (levelTracker.getCurrentLevel() <= levels.getNumLevels())
+            levelTracker.setCurrentLevel(1);
         continueButton.setOnAction(event -> continueGame(stage));
 
         SpaceButton newGameButton = new SpaceButton("New Game");
@@ -157,11 +158,18 @@ public class Main extends Application
         mainMenuPane.setAlignment(copyrightLabel, Pos.BOTTOM_RIGHT);
         mainMenu = new Scene(mainMenuPane);
         mainMenu.setCursor(Cursor.CROSSHAIR);
+        updateMainMenu();
     }
 
-    private void updateMainMenu(Stage stage)
+    private void updateMainMenu()
     {
         loadingLabel.setVisible(false);
+        if (levelTracker.getCurrentLevel() <= levels.getNumLevels())
+        {
+            continueButton.setDisable(true);
+            levelTracker.setCurrentLevel(1);
+        }
+
         if (levelTracker.getCurrentLevel() > 1)
         {
             continueButton.setDisable(false);
@@ -179,8 +187,17 @@ public class Main extends Application
     private void continueGame(Stage stage)
     {
         loadingLabel.setVisible(true);
-        Game game = new Game(stage, mainMenu, levels.getLevel(levelTracker.getCurrentLevel()), levelTracker);
-        showLevelDesc(stage, game);
+        Game game;
+        try
+        {
+            game = new Game(stage, mainMenu, levels.getLevel(levelTracker.getCurrentLevel()), levelTracker);
+            showLevelDesc(stage, game);
+        }
+        catch (IndexOutOfBoundsException ioobe)
+        {
+            levelTracker.setCurrentLevel(1);
+            startNewGame(stage);
+        }
     }
 
     /**
