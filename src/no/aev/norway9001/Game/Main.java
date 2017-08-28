@@ -22,7 +22,6 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 /**
- * @author Mikael
  * @author Asgeir Vinkenes
  */
 public class Main extends Application
@@ -171,6 +170,7 @@ public class Main extends Application
     private void startNewGame(Stage stage)
     {
         loadingLabel.setVisible(true);
+        levelTracker.setCurrentLevel(1);
         Game game = new Game(stage, mainMenu, levels.getLevel(1), levelTracker);
         showLevelDesc(stage, game);
     }
