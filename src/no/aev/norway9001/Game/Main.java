@@ -259,7 +259,7 @@ public class Main extends Application
     }
 
     /**
-     * Show the credits menu.
+     * Set up the credits menu.
      *
      * @param stage
      */
@@ -269,6 +269,10 @@ public class Main extends Application
         credits = new Scene(root);
         root.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
         root.setAlignment(Pos.CENTER);
+
+        ImageView bgImg = new ImageView("menu/creditsbg.png");
+        bgImg.setFitWidth(Screen.getPrimary().getVisualBounds().getWidth());
+        bgImg.setFitHeight(Screen.getPrimary().getVisualBounds().getHeight() + 50);
 
         VBox creditsBox = new VBox();
         creditsBox.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -311,7 +315,7 @@ public class Main extends Application
         backButton.setOnAction(event -> showMainMenu(stage));
 
         creditsBox.getChildren().addAll(creditsLabel, progLabel1, progLabel2, gfxLabel1, gfxLabel2, thxLabel1, thxLabel2, backButton);
-        root.getChildren().addAll(creditsBox);
+        root.getChildren().addAll(bgImg, creditsBox);
     }
 
     private void quit()
