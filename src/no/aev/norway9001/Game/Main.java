@@ -198,7 +198,7 @@ public class Main extends Application
     private void newGameButtonClicked(Stage stage)
     {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText("Start new game");
+        alert.setHeaderText("Starting new game");
         alert.setTitle("New game");
         alert.setContentText("Starting a new game will erase all your current progress. Are you sure you want to continue?");
 
@@ -209,6 +209,8 @@ public class Main extends Application
             {
                 startNewGame(stage);
             }
+            else
+                System.out.println("Cancelled starting new game.");
         }
         else
         {
@@ -224,7 +226,9 @@ public class Main extends Application
     private void startNewGame(Stage stage)
     {
         loadingLabel.setVisible(true);
+        System.out.println("Setting game to level 1");
         levelTracker.setCurrentLevel(1);
+        System.out.println("Recreating level 1");
         levels.createLevel(1);
         Game game = new Game(stage, mainMenu, levels.getLevel(1), levelTracker);
         showLevelDesc(stage, game);

@@ -227,11 +227,15 @@ public class Game
      */
     private void sendWave()
     {
+        if (timer % 100 == 0)
+            System.out.println("Timer is " + timer);
+
         if (currentWave < level.getNumWaves())
         {
             if (timer == level.getWave(currentWave).getTime())
             {
                 spawnEnemies(level.getWave(currentWave).getShips());
+                System.out.println("Sending wave " + currentWave);
                 currentWave++;
             }
         }

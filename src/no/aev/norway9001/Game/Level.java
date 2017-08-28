@@ -174,5 +174,6 @@ public class Level
     {
         waves.clear();
         powerupWaves.clear();
+        duration = 0;
     }
 }

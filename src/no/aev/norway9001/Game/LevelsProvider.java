@@ -22,7 +22,7 @@ import javafx.scene.image.ImageView;
 import java.util.ArrayList;
 
 /**
- * Created by Asgeir on 13.07.2017.
+ * @author Asgeir Vinkenes
  */
 public class LevelsProvider
 {
@@ -197,6 +197,7 @@ public class LevelsProvider
     private void createLevel01()
     {
         level01.clear();
+        System.out.println("Adding waves to level 1");
         level01.addWave(SquareShip.class, 3, 50);
         level01.addWave(FlyingSaucer.class, 3, 1000);
         level01.addWave(TriangleShip.class, 3, 1000);
@@ -212,6 +213,7 @@ public class LevelsProvider
         level01.addWave(SquareShip.class, 3, 150);
 
         level01.addPowerups(HealthPowerupSmall.class, 1, 5000);
+        System.out.println("There are " + level01.getNumWaves() + " waves in this level.");
     }
 
     private void createLevel02()
