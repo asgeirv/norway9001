@@ -133,7 +133,7 @@ public class Main extends Application
 
         SpaceButton newGameButton = new SpaceButton("New Game");
         newGameButton.setPrefWidth(BUTTON_WIDTH);
-        newGameButton.setOnAction(event -> startNewGame(stage));
+        newGameButton.setOnAction(event -> newGameButtonClicked(stage));
 
         SpaceButton creditsButton = new SpaceButton("Credits");
         creditsButton.setPrefWidth(BUTTON_WIDTH);
@@ -191,11 +191,11 @@ public class Main extends Application
     }
 
     /**
-     * Starts a new game.
+     * Method called when the New Game button is clicked.
      *
      * @param stage
      */
-    private void startNewGame(Stage stage)
+    private void newGameButtonClicked(Stage stage)
     {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText("Start new game");
@@ -207,21 +207,27 @@ public class Main extends Application
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK)
             {
-                loadingLabel.setVisible(true);
-                levelTracker.setCurrentLevel(1);
-                levels.createLevel(1);
-                Game game = new Game(stage, mainMenu, levels.getLevel(1), levelTracker);
-                showLevelDesc(stage, game);
+                startNewGame(stage);
             }
         }
         else
         {
-            loadingLabel.setVisible(true);
-            levelTracker.setCurrentLevel(1);
-            levels.createLevel(1);
-            Game game = new Game(stage, mainMenu, levels.getLevel(1), levelTracker);
-            showLevelDesc(stage, game);
+            startNewGame(stage);
         }
+    }
+
+    /**
+     * Starts a new game.
+     *
+     * @param stage
+     */
+    private void startNewGame(Stage stage)
+    {
+        loadingLabel.setVisible(true);
+        levelTracker.setCurrentLevel(1);
+        levels.createLevel(1);
+        Game game = new Game(stage, mainMenu, levels.getLevel(1), levelTracker);
+        showLevelDesc(stage, game);
     }
 
     /**
@@ -243,7 +249,7 @@ public class Main extends Application
         {
             levelTracker.setCurrentLevel(1);
             levels.createLevel(1);
-            startNewGame(stage);
+            newGameButtonClicked(stage);
         }
     }
 
