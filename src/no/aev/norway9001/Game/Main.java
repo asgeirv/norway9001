@@ -7,6 +7,8 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -21,6 +23,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+
+import java.util.Optional;
 
 /**
  * @author Asgeir Vinkenes
@@ -193,11 +197,31 @@ public class Main extends Application
      */
     private void startNewGame(Stage stage)
     {
-        loadingLabel.setVisible(true);
-        levelTracker.setCurrentLevel(1);
-        levels.createLevel(1);
-        Game game = new Game(stage, mainMenu, levels.getLevel(1), levelTracker);
-        showLevelDesc(stage, game);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Start new game");
+        alert.setTitle("New game");
+        alert.setContentText("Starting a new game will erase all your current progress. Are you sure you want to continue?");
+
+        if (levelTracker.getCurrentLevel() != 1)
+        {
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK)
+            {
+                loadingLabel.setVisible(true);
+                levelTracker.setCurrentLevel(1);
+                levels.createLevel(1);
+                Game game = new Game(stage, mainMenu, levels.getLevel(1), levelTracker);
+                showLevelDesc(stage, game);
+            }
+        }
+        else
+        {
+            loadingLabel.setVisible(true);
+            levelTracker.setCurrentLevel(1);
+            levels.createLevel(1);
+            Game game = new Game(stage, mainMenu, levels.getLevel(1), levelTracker);
+            showLevelDesc(stage, game);
+        }
     }
 
     /**
