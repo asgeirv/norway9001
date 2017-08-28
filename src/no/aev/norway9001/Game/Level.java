@@ -169,4 +169,10 @@ public class Level
     {
         return powerupWaves.size();
     }
+
+    public void clear()
+    {
+        waves.clear();
+        powerupWaves.clear();
+    }
 }

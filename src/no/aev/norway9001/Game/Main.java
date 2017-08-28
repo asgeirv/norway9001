@@ -171,6 +171,7 @@ public class Main extends Application
     {
         loadingLabel.setVisible(true);
         levelTracker.setCurrentLevel(1);
+        levels.createLevel(1);
         Game game = new Game(stage, mainMenu, levels.getLevel(1), levelTracker);
         showLevelDesc(stage, game);
     }
@@ -181,12 +182,14 @@ public class Main extends Application
         Game game;
         try
         {
+            levels.createLevel(levelTracker.getCurrentLevel());
             game = new Game(stage, mainMenu, levels.getLevel(levelTracker.getCurrentLevel()), levelTracker);
             showLevelDesc(stage, game);
         }
         catch (IndexOutOfBoundsException ioobe)
         {
             levelTracker.setCurrentLevel(1);
+            levels.createLevel(1);
             startNewGame(stage);
         }
     }
@@ -198,8 +201,6 @@ public class Main extends Application
      */
     private void showLevelDesc(Stage stage, Game game)
     {
-        levels.createLevels();
-
         VBox levelDescBox = new VBox();
         levelDescBox.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
         levelDescBox.setAlignment(Pos.CENTER);

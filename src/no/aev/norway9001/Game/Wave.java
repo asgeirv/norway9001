@@ -76,4 +76,9 @@ public class Wave
     {
         return time;
     }
+
+    public void clear()
+    {
+        ships.clear();
+    }
 }
