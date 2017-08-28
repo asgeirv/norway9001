@@ -18,6 +18,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -32,6 +33,7 @@ public class Main extends Application
     private ProgressTracker progress;
     private LevelTracker levelTracker;
     private Scene mainMenu;
+    private Scene credits;
     private SpaceButton continueButton;
     private Label loadingLabel;
 
@@ -80,6 +82,7 @@ public class Main extends Application
         stage.setTitle("Norway 9001 Alpha");
         levels = new LevelsProvider();
         setupMainMenu(stage);
+        setupCredits(stage);
 
         stage.sceneProperty().addListener((obs, oldScene, newScene) ->
         {
@@ -128,6 +131,13 @@ public class Main extends Application
         newGameButton.setPrefWidth(BUTTON_WIDTH);
         newGameButton.setOnAction(event -> startNewGame(stage));
 
+        SpaceButton creditsButton = new SpaceButton("Credits");
+        creditsButton.setPrefWidth(BUTTON_WIDTH);
+        creditsButton.setOnAction(event -> {
+            stage.setScene(credits);
+            stage.setFullScreen(true);
+        });
+
         SpaceButton exitButton = new SpaceButton("Exit");
         exitButton.setPrefWidth(BUTTON_WIDTH);
         exitButton.setCancelButton(true);
@@ -149,7 +159,7 @@ public class Main extends Application
         copyrightLabel.setPadding(new Insets(10));
         copyrightLabel.setTextFill(Color.WHITE);
 
-        mainMenuBox.getChildren().addAll(logo, continueButton, newGameButton, exitButton);
+        mainMenuBox.getChildren().addAll(logo, continueButton, newGameButton, creditsButton, exitButton);
         mainMenuPane.getChildren().addAll(mainMenuBox, loadingLabel, versionLabel, copyrightLabel);
         mainMenuPane.setAlignment(versionLabel, Pos.BOTTOM_LEFT);
         mainMenuPane.setAlignment(copyrightLabel, Pos.BOTTOM_RIGHT);
@@ -157,6 +167,9 @@ public class Main extends Application
         mainMenu.setCursor(Cursor.CROSSHAIR);
     }
 
+    /**
+     * Update the status of the main menu.
+     */
     private void updateMainMenu()
     {
         loadingLabel.setVisible(false);
@@ -167,6 +180,17 @@ public class Main extends Application
         }
     }
 
+    private void showMainMenu(Stage stage)
+    {
+        stage.setScene(mainMenu);
+        stage.setFullScreen(true);
+    }
+
+    /**
+     * Starts a new game.
+     *
+     * @param stage
+     */
     private void startNewGame(Stage stage)
     {
         loadingLabel.setVisible(true);
@@ -176,6 +200,11 @@ public class Main extends Application
         showLevelDesc(stage, game);
     }
 
+    /**
+     * Continues the game at the level specified by leverTracker.
+     *
+     * @param stage
+     */
     private void continueGame(Stage stage)
     {
         loadingLabel.setVisible(true);
@@ -227,6 +256,62 @@ public class Main extends Application
         });
         stage.setScene(descScene);
         stage.setFullScreen(true);
+    }
+
+    /**
+     * Show the credits menu.
+     *
+     * @param stage
+     */
+    private void setupCredits(Stage stage)
+    {
+        StackPane root = new StackPane();
+        credits = new Scene(root);
+        root.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+        root.setAlignment(Pos.CENTER);
+
+        VBox creditsBox = new VBox();
+        creditsBox.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
+        creditsBox.setMaxWidth(500);
+        creditsBox.setSpacing(10);
+        creditsBox.setAlignment(Pos.CENTER);
+
+        Label creditsLabel = new Label("Credits");
+        creditsLabel.setFont(fonts.getSpaceFontLarge());
+        creditsLabel.setTextFill(Color.WHITE);
+        creditsLabel.setPadding(new Insets(0, 0, 20, 0));
+
+        Label progLabel1 = new Label("Programming");
+        progLabel1.setFont(fonts.getSpaceFontMedium());
+        progLabel1.setTextFill(Color.WHITE);
+        Label progLabel2 = new Label("Asgeir Vinkenes");
+        progLabel2.setTextFill(Color.WHITE);
+
+        Label gfxLabel1 = new Label("Graphics");
+        gfxLabel1.setFont(fonts.getSpaceFontMedium());
+        gfxLabel1.setTextFill(Color.WHITE);
+        Label gfxLabel2 = new Label("Asgeir Vinkenes\n" +
+                "NASA");
+        gfxLabel2.setTextFill(Color.WHITE);
+        gfxLabel2.setTextAlignment(TextAlignment.CENTER);
+
+        Label thxLabel1 = new Label("Thanks to");
+        thxLabel1.setFont(fonts.getSpaceFontMedium());
+        thxLabel1.setTextFill(Color.WHITE);
+        Label thxLabel2 = new Label("Ole Kristian Sandum\n" +
+                "Mikael Synnes\n" +
+                "NASA");
+        thxLabel2.setTextFill(Color.WHITE);
+        thxLabel2.setTextAlignment(TextAlignment.CENTER);
+        thxLabel2.setPadding(new Insets(0, 0, 20, 0));
+
+        SpaceButton backButton = new SpaceButton("Back");
+        backButton.setPrefWidth(BUTTON_WIDTH);
+        backButton.setCancelButton(true);
+        backButton.setOnAction(event -> showMainMenu(stage));
+
+        creditsBox.getChildren().addAll(creditsLabel, progLabel1, progLabel2, gfxLabel1, gfxLabel2, thxLabel1, thxLabel2, backButton);
+        root.getChildren().addAll(creditsBox);
     }
 
     private void quit()
