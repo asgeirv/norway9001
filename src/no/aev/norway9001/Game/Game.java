@@ -208,7 +208,7 @@ public class Game
         {
             running = false;
             gameLoop.stop();
-            infoLabelBig.setText("WAVE CLEARED");
+            infoLabelBig.setText("LEVEL CLEARED");
             infoLabelBig.setVisible(true);
             infoLabelSmall.setText("Your score: " + score + "\n" +
                     "Press 'Esc' to return to main menu.");
