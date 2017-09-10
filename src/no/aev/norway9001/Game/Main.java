@@ -213,9 +213,7 @@ public class Main extends Application
                 System.out.println("Cancelled starting new game.");
         }
         else
-        {
             startNewGame(stage);
-        }
     }
 
     /**
@@ -235,7 +233,7 @@ public class Main extends Application
     }
 
     /**
-     * Continues the game at the level specified by leverTracker.
+     * Continues the game at the level specified by levelTracker.
      *
      * @param stage
      */
