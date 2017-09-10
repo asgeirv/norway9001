@@ -4,6 +4,7 @@ import no.aev.norway9001.MoveableObjects.Bullet;
 import no.aev.norway9001.MoveableObjects.Enemy;
 import no.aev.norway9001.MoveableObjects.Powerup;
 import no.aev.norway9001.MoveableObjects.Powerups.MineSweeper;
+import no.aev.norway9001.MoveableObjects.ShipTypes.Aimer;
 import no.aev.norway9001.MoveableObjects.ShipTypes.Player;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -258,6 +259,7 @@ public class Game
     private void spawnEnemies(ArrayList<Enemy> enemiesToSpawn)
     {
         Enemy currentEnemy;
+        Aimer currentAimer;
         int numShips = enemiesToSpawn.size();
         int shipNum;
         int shipDistance;
@@ -270,6 +272,11 @@ public class Game
             shipsPane.getChildren().add(currentEnemy);
             currentEnemy.setX(windowWidth);
             currentEnemy.setY(shipDistance * shipNum);
+            if (currentEnemy.getClass() == Aimer.class)
+            {
+                currentAimer = (Aimer) currentEnemy;
+                currentAimer.setPlayer(playerShip);
+            }
         }
     }
 

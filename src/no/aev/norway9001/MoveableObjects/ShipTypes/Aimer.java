@@ -13,8 +13,8 @@ public class Aimer extends Enemy
 {
 
     private static final int SPEED = 1;
-    private static final int MAX_HP = 30;
-    private static final int POINTS = 10;
+    private static final int MAX_HP = 40;
+    private static final int POINTS = 15;
     private static final int COOLDOWN = 200;
     private int counter = 2;
     private Player player;
@@ -37,10 +37,25 @@ public class Aimer extends Enemy
         if (getShotCooldown() <= 0)
         {
             Bullet newBullet = new OrangeBullet(getX(), getY() + 15);
+            double bulletSpeed = newBullet.getxSpeed();
+
+            // Calculate distances between ship and player
+            double xDist = getX() - player.getX();
+            double yDist = getY() - player.getY();
+            double dist = Math.sqrt(xDist * xDist + yDist * yDist);
+
+            // Calculate sine and cosine of the angle between ship and player
+            double sin = yDist / dist;
+            double cos = xDist / dist;
+
+            // Calculate x and y speeds
+            newBullet.setxSpeed(dist * cos);
+            newBullet.setySpeed(dist * sin);
+
             bulletList.add(newBullet);
             if (counter > 0)
             {
-                setShotCooldown(10);
+                setShotCooldown(20);
                 counter--;
             }
             else
