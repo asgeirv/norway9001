@@ -8,6 +8,7 @@ import no.aev.norway9001.MoveableObjects.Powerups.LaserPowerup;
 import no.aev.norway9001.MoveableObjects.Powerups.MineSweeper;
 import no.aev.norway9001.MoveableObjects.Powerups.ShieldPowerup;
 import no.aev.norway9001.MoveableObjects.Powerups.TripleGunPowerup;
+import no.aev.norway9001.MoveableObjects.ShipTypes.Aimer;
 import no.aev.norway9001.MoveableObjects.ShipTypes.Bouncer;
 import no.aev.norway9001.MoveableObjects.ShipTypes.DiamondShip;
 import no.aev.norway9001.MoveableObjects.ShipTypes.FlyingSaucer;
@@ -126,6 +127,11 @@ public class LevelsProvider
         level08 = new Level(lvl08Desc, new Image("backgrounds/lvl07bg.png"));
         levels.add(level08);
         level08.addBgObj(new ImageView("backgroundObjs/testPlanet.png"));
+
+        String lvl09Desc = "WIP";
+        level09 = new Level(lvl09Desc, new Image("backgrounds/lvl07bg.png"));
+        levels.add(level09);
+        level09.addBgObj(new ImageView("backgroundObjs/testPlanet.png"));
     }
 
     public void createLevel(int levelNumber)
@@ -170,6 +176,11 @@ public class LevelsProvider
             case 8:
             {
                 createLevel08();
+                break;
+            }
+            case 9:
+            {
+                createLevel09();
                 break;
             }
             default:
@@ -690,5 +701,11 @@ public class LevelsProvider
             if (i % 2 == 0)
                 minelayers.get(i).toggleDirection();
         }
+    }
+
+    private void createLevel09()
+    {
+        level09.addWave(Aimer.class, 1, 50);
+        level09.addWave(Aimer.class, 1, 10000);
     }
 }

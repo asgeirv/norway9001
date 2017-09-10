@@ -16,7 +16,7 @@ public class Aimer extends Enemy
     private static final int MAX_HP = 40;
     private static final int POINTS = 15;
     private static final int COOLDOWN = 200;
-    private int counter = 2;
+    private int counter = 4;
     private Player player;
 
     public Aimer()
@@ -49,8 +49,8 @@ public class Aimer extends Enemy
             double cos = xDist / dist;
 
             // Calculate x and y speeds
-            newBullet.setxSpeed(dist * cos);
-            newBullet.setySpeed(dist * sin);
+            newBullet.setxSpeed(bulletSpeed * cos);
+            newBullet.setySpeed(bulletSpeed * sin);
 
             bulletList.add(newBullet);
             if (counter > 0)
@@ -61,7 +61,7 @@ public class Aimer extends Enemy
             else
             {
                 setShotCooldown(COOLDOWN);
-                counter = 2;
+                counter = 4;
             }
         }
         else
