@@ -1,5 +1,6 @@
 package no.aev.norway9001.MoveableObjects.BulletTypes;
 
+import javafx.scene.transform.Rotate;
 import no.aev.norway9001.MoveableObjects.Bullet;
 import javafx.scene.image.Image;
 
@@ -17,12 +18,15 @@ public class Spark extends Bullet
     {
         super(initialX, initialY, X_SPEED, Y_SPEED, DAMAGE);
         setImage(new Image("bullets/spark.png", 40, 40, true, false));
+        //getTransforms().add(new Rotate(0));
     }
 
     @Override
     public void move()
     {
         super.move();
+
+        setRotate(getRotate() - 50);
 
         if (counter <= INTERVAL)
         {
