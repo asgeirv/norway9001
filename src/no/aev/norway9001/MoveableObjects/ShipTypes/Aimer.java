@@ -22,13 +22,13 @@ public class Aimer extends Enemy
     public Aimer()
     {
         super(0, 0, SPEED, MAX_HP, POINTS, COOLDOWN);
-        setImage(new Image("ships/square.png", 50, 50, true, true));
+        setImage(new Image("ships/aimer.png", 50, 50, true, true));
     }
 
     public Aimer(double initialX, double initialY)
     {
         super(initialX, initialY, SPEED, MAX_HP, POINTS, COOLDOWN);
-        setImage(new Image("ships/square.png", 50, 50, true, true));
+        setImage(new Image("ships/aimer.png", 50, 50, true, true));
     }
 
     @Override
