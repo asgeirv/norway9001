@@ -124,14 +124,16 @@ public class LevelsProvider
                 "but that's nothing an ace pilot like you can't deal with.\n" +
                 "Also our scientists have solved the problem of our enemies having access to lasers.\n" +
                 "How, you might ask? Well, have a look for yourself.";
-        level08 = new Level(lvl08Desc, new Image("backgrounds/lvl07bg.png"));
+        level08 = new Level(lvl08Desc, new Image("backgrounds/lvl08bg.png"));
         levels.add(level08);
-        level08.addBgObj(new ImageView("backgroundObjs/testPlanet.png"));
+        level08.addBgObj(new ImageView("backgroundObjs/lvl08planet01.png"));
+        level08.addBgObj(new ImageView("backgroundObjs/lvl08planet02.png"));
 
         String lvl09Desc = "WIP";
-        level09 = new Level(lvl09Desc, new Image("backgrounds/lvl07bg.png"));
+        level09 = new Level(lvl09Desc, new Image("backgrounds/lvl09bg.png"));
         levels.add(level09);
-        level09.addBgObj(new ImageView("backgroundObjs/testPlanet.png"));
+        level09.addBgObj(new ImageView("backgroundObjs/lvl09planet01.png"));
+        level09.addBgObj(new ImageView("backgroundObjs/lvl09planet02.png"));
     }
 
     public void createLevel(int levelNumber)
