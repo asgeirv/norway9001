@@ -1,7 +1,10 @@
 package no.aev.norway9001.MoveableObjects.ShipTypes;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
+import javafx.util.Duration;
 import no.aev.norway9001.Game.Debugger;
 import no.aev.norway9001.MoveableObjects.Bullet;
 import no.aev.norway9001.MoveableObjects.BulletTypes.EnemyLaserBlast;
@@ -30,6 +33,11 @@ public class FinalBoss extends Enemy
     private static final int DIAGONAL_MODE = 1;
     private static final int AIMBOT_MODE = 2;
     private static final int MISSILE_MODE = 3;
+
+    // Ship states
+    private Image healthySprite = new Image("ships/finalboss-healthy.png");
+    private Image damagedSprite = new Image("ships/finalboss-damaged.png");
+    private Image criticalSprite = new Image("ships/finalboss-critical.png");
 
     private Debugger debugger = Debugger.INSTANCE;
 
@@ -139,6 +147,7 @@ public class FinalBoss extends Enemy
     public void move()
     {
         debugger.printDebugInfo(this.getClass(), "Boss coordinates: " + getX() + "," + getY());
+        updateAppearance();
         if (getX() > screenWidth - 250)
             super.move();
         else
@@ -157,6 +166,34 @@ public class FinalBoss extends Enemy
             else if (getY() > screenHeight - 400)
                 movingDown = false;
         }
+    }
+
+    private void updateAppearance()
+    {
+        if (getCurrentHP() > MAX_HP * 0.67)
+            setImage(healthySprite);
+        else if (getCurrentHP() > MAX_HP * 0.33)
+            setImage(damagedSprite);
+        else
+            setImage(criticalSprite);
+    }
+
+    @Override
+    public void die()
+    {
+        alive = false;
+        setSpeed(0);
+        setImage(getDeathExplosion());
+        setX(getX() - 20);
+        setY(getY() - 20);
+        setFitWidth(250);
+        setFitHeight(250);
+        Timeline death = new Timeline(
+                new KeyFrame(Duration.millis(500), event -> setImage(null))
+        );
+        death.setCycleCount(1);
+        death.play();
+        // TODO: Add code for a cooler death animation
     }
 
     public void setPlayer(Player player)
