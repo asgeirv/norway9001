@@ -478,15 +478,14 @@ public class Game
         if (playerShip.isAlive())
         {
             // Stay within bounds
-            // TODO: Fix edge behaviour
             x += playerShip.getxVelocity();
             y += playerShip.getyVelocity();
-            if (x < playerShip.getFitHeight())
-                x = playerShip.getFitHeight();
-            else if (x > windowWidth - playerShip.getFitWidth())
-                x = windowWidth - playerShip.getFitWidth();
-            else if (y < 0)
-                y = playerShip.getFitHeight();
+            if (x < playerShip.getFitHeight() - 25)
+                x = playerShip.getFitHeight() - 25;
+            else if (x > windowWidth - playerShip.getFitWidth() - 25)
+                x = windowWidth - playerShip.getFitWidth() - 25;
+            else if (y < -50)
+                y = playerShip.getFitHeight() - 50;
             else if (y > windowHeight)
                 y = windowHeight;
 
