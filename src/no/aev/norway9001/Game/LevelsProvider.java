@@ -709,6 +709,71 @@ public class LevelsProvider
     {
         level09.addWave(Aimer.class, 1, 50);
         level09.addWave(SparkShooter.class, 1, 200);
-        level09.addWave(Aimer.class, 1, 10000);
+        level09.addWave(Aimer.class, 2, 300);
+        level09.addWave(Aimer.class, 1, 500);
+        level09.addWave(Aimer.class, 2, 500);
+        level09.addWave(SquareShip.class, 3, 1000);
+        level09.addWave(SquareShip.class, 4, 100);
+        level09.addWave(SquareShip.class, 2, 100);
+        level09.addWave(SquareShip.class, 3, 100);
+        level09.addWave(SparkShooter.class, 1, 1000);
+        level09.addWave(SparkShooter.class, 2, 150);
+        level09.addWave(SparkShooter.class, 3, 150);
+        level09.addWave(Bouncer.class, 5, 1000);
+        level09.addWave(DiamondShip.class, 2, 500);
+        level09.addWave(SquareShip.class, 3, 500);
+        level09.addWave(HexaShip.class, 1, 500);
+        level09.addWave(DiamondShip.class, 2, 500);
+        level09.addWave(SquareShip.class, 3, 750);
+        level09.addWave(Aimer.class, 2, 250);
+        level09.addWave(SparkShooter.class, 2, 250);
+        level09.addWave(HexaShip.class, 2, 500);
+        level09.addWave(Minelayer.class, 4, 500);
+        level09.addWave(TriangleShip.class, 6, 250);
+        level09.addWave(TriangleShip.class, 6, 25);
+        level09.addWave(TriangleShip.class, 6, 25);
+        level09.addWave(TriangleShip.class, 6, 25);
+        level09.addWave(TriangleShip.class, 6, 25);
+        level09.addWave(TriangleShip.class, 6, 25);
+        level09.addWave(Aimer.class, 3, 750);
+        level09.addWave(HexaShip.class, 2, 500);
+        level09.addWave(Minelayer.class, 4, 200);
+        level09.addWave(DiamondShip.class, 3, 300);
+
+        level09.addPowerups(HealthPowerupBig.class, 1, 1000);
+        level09.addPowerups(HealthPowerupSmall.class, 2, 1100);
+        level09.addPowerups(DoubleGunPowerup.class, 1, 2000);
+        level09.addPowerups(HealthPowerupSmall.class, 2, 2100);
+        level09.addPowerups(DoubleGunPowerup.class, 1, 3000);
+        level09.addPowerups(HealthPowerupSmall.class, 2, 3100);
+        level09.addPowerups(HealthPowerupBig.class, 1, 4000);
+        level09.addPowerups(HealthPowerupSmall.class, 2, 4100);
+        level09.addPowerups(HealthPowerupSmall.class, 2, 5000);
+        level09.addPowerups(HealthPowerupBig.class, 1, 5100);
+        level09.addPowerups(DoubleGunPowerup.class, 1, 6000);
+        level09.addPowerups(HealthPowerupBig.class, 2, 6100);
+        level09.addPowerups(HealthPowerupBig.class, 1, 7000);
+        level09.addPowerups(HealthPowerupSmall.class, 4, 7100);
+        level09.addPowerups(HealthPowerupSmall.class, 5, 8000);
+        level09.addPowerups(HealthPowerupSmall.class, 5, 8100);
+
+        ArrayList<Minelayer> minelayers = new ArrayList<>();
+
+        for (int i = 0; i < level08.getNumWaves(); i++)
+        {
+            for (Enemy currentEnemy : level08.getWave(i).getShips())
+            {
+                if (currentEnemy.getClass() == Minelayer.class)
+                {
+                    minelayers.add((Minelayer) currentEnemy);
+                }
+            }
+        }
+
+        for (int i = 0; i < minelayers.size(); i++)
+        {
+            if (i % 2 == 0)
+                minelayers.get(i).toggleDirection();
+        }
     }
 }

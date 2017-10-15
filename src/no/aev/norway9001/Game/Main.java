@@ -247,7 +247,7 @@ public class Main extends Application
             game = new Game(stage, mainMenu, levels.getLevel(levelTracker.getCurrentLevel()), levelTracker);
             showLevelDesc(stage, game);
         }
-        catch (IndexOutOfBoundsException ioobe)
+        catch (IndexOutOfBoundsException err)
         {
             levelTracker.setCurrentLevel(1);
             levels.createLevel(1);
