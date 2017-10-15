@@ -17,6 +17,8 @@ import java.io.PrintWriter;
 public class ProgressTracker
 {
 
+    private Debugger debugger = Debugger.INSTANCE;
+
     public ProgressTracker()
     {
 
@@ -38,21 +40,21 @@ public class ProgressTracker
             String line;
             line = br.readLine();
             String input[] = line.split("=");
-            System.out.println("Reading save file...");
+            debugger.printDebugInfo(this.getClass(), "Reading save file...");
             progress.setCurrentLevel(Integer.parseInt(input[1]));
-            System.out.println("Setting starting level to: " + progress.getCurrentLevelAsString());
+            debugger.printDebugInfo(this.getClass(), "Setting starting level to: " + progress.getCurrentLevelAsString());
         }
         catch (IOException outerError)
         {
             try
             {
-                System.out.println("Corrupt or non-existing save file. Creating new one.");
+                debugger.printDebugInfo(this.getClass(), "Corrupt or non-existent save file. Creating new one.");
                 PrintWriter out = new PrintWriter("norway.9001");
                 out.println("CURRENT_LEVEL=1");
             }
             catch (FileNotFoundException innerError)
             {
-                System.out.println("Unable to read save file.");
+                debugger.printDebugInfo(this.getClass(), "Unable to read save file. Check file and/or folder permissions.");
             }
         }
         return progress;
@@ -62,13 +64,13 @@ public class ProgressTracker
     {
         try (FileWriter output = new FileWriter("norway.9001", false))
         {
-            System.out.println("Writing save file...");
-            System.out.format("Saving progress at level %d.", progress.getCurrentLevel());
+            debugger.printDebugInfo(this.getClass(), "Writing save file...");
+            debugger.printDebugInfo(this.getClass(), "Saving progress at level " + progress.getCurrentLevel());
             output.write("CURRENT_LEVEL=" + progress.getCurrentLevelAsString());
         }
         catch (IOException ioe)
         {
-            System.out.println("Unable to write save file. Check file and/or folder permissions.");
+            debugger.printDebugInfo(this.getClass(), "Unable to write save file. Check file and/or folder permissions.");
         }
     }
 }
