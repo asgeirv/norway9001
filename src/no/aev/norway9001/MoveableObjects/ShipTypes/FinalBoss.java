@@ -147,7 +147,7 @@ public class FinalBoss extends Enemy
     @Override
     public void move()
     {
-        debugger.printDebugInfo(this.getClass(), "Boss coordinates: " + getX() + "," + getY());
+        //debugger.printDebugInfo(this.getClass(), "Boss coordinates: " + getX() + "," + getY());
         updateAppearance();
         if (getX() > screenWidth - 250)
             super.move();

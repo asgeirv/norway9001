@@ -261,17 +261,18 @@ public class Game
         Aimer currentAimer;
         FinalBoss boss;
         int numShips = enemiesToSpawn.size();
-        int shipNum;
         int shipDistance;
-        for (int i = 0; i < numShips; i++)
+        double shipHeight;
+        for (int i = 1; i <= numShips; i++)
         {
-            shipNum = i + 1;
             shipDistance = (int) windowHeight / (numShips + 1);
-            currentEnemy = enemiesToSpawn.get(i);
+            currentEnemy = enemiesToSpawn.get(i - 1);
+            shipHeight = currentEnemy.getImage().getHeight();
             enemies.add(currentEnemy);
             shipsPane.getChildren().add(currentEnemy);
             currentEnemy.setX(windowWidth);
-            currentEnemy.setY(shipDistance * shipNum);
+            debugger.printDebugInfo(this.getClass(), "Enemy height = " + shipHeight);
+            currentEnemy.setY((shipDistance * i) - (shipHeight / 2));
             if (currentEnemy.getClass() == Aimer.class)
             {
                 currentAimer = (Aimer) currentEnemy;
