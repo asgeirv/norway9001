@@ -196,6 +196,9 @@ public final class LevelsProvider
                 createLevel09();
                 break;
             }
+            case 10:
+                createLevel10();
+                break;
             default:
                 throw new IndexOutOfBoundsException("Invalid level number.");
         }
@@ -813,5 +816,10 @@ public final class LevelsProvider
             if (i % 2 == 0)
                 minelayers.get(i).toggleDirection();
         }
+    }
+
+    private void createLevel10()
+    {
+        level10.clear();
     }
 }
