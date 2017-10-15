@@ -74,7 +74,7 @@ public class Main extends Application
         }
 
         fonts = new FontsProvider();
-        debugger.writeDebugInfo("DEBUG MODE ON");
+        debugger.printDebugInfo("DEBUG MODE ON");
 
         stage.setTitle("Norway 9001 Alpha");
         levels = new LevelsProvider();
@@ -169,7 +169,7 @@ public class Main extends Application
      */
     private void updateMainMenu()
     {
-        debugger.writeDebugInfo("Updating main menu");
+        debugger.printDebugInfo("Updating main menu");
         loadingLabel.setVisible(false);
         if (levelTracker.getCurrentLevel() > 1)
         {
@@ -202,10 +202,10 @@ public class Main extends Application
             if (result.get() == ButtonType.OK)
             {
                 startNewGame(stage);
-                debugger.writeDebugInfo("Starting new game");
+                debugger.printDebugInfo("Starting new game");
             }
             else
-                debugger.writeDebugInfo("Starting new game cancelled");
+                debugger.printDebugInfo("Starting new game cancelled");
         }
         else
             startNewGame(stage);
@@ -236,7 +236,7 @@ public class Main extends Application
     {
         int currentLevel = levelTracker.getCurrentLevel();
         Game game;
-        debugger.printDebugInfo("Setting game to level " + currentLevel));
+        debugger.printDebugInfo("Setting game to level " + currentLevel);
         try
         {
             levels.createLevel(levelTracker.getCurrentLevel());
