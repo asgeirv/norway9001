@@ -42,6 +42,7 @@ public class Main extends Application
     private Label loadingLabel;
 
     private LevelsProvider levels;
+    private Debugger debugger = Debugger.INSTANCE;
 
     private static final int BUTTON_WIDTH = 300;
     private static final int BUTTON_WIDTH_HOVER = 350;
@@ -66,18 +67,9 @@ public class Main extends Application
         if (getParameters().getRaw().size() != 0)
         {
             arguments = getParameters().getRaw().get(0);
-            try
+            if (arguments.toLowerCase().equals("debug"))
             {
-                if (!arguments.equals(""))
-                {
-                    levelTracker.setCurrentLevel(Integer.parseInt(arguments));
-                }
-            }
-            catch (NumberFormatException e)
-            {
-                System.out.println("\nPlease enter a number for the first argument.\n");
-                e.printStackTrace();
-                Platform.exit();
+                debugger.setDebug(true);
             }
         }
 
