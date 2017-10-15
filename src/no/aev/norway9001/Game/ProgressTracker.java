@@ -33,7 +33,7 @@ public final class ProgressTracker
      */
     public LevelTracker getProgress()
     {
-        LevelTracker progress = new LevelTracker();
+        LevelTracker progress = LevelTracker.INSTANCE;
 
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(new FileInputStream("norway.9001"))))

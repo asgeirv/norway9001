@@ -3,10 +3,16 @@ package no.aev.norway9001.Game;
 /**
  * Created by Asgeir on 13.07.2017.
  */
-public class LevelTracker
+public final class LevelTracker
 {
 
+    public static final LevelTracker INSTANCE = new LevelTracker();
     private int currentLevel = 1;
+
+    private LevelTracker()
+    {
+
+    }
 
     public int getCurrentLevel()
     {
