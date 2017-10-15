@@ -707,6 +707,7 @@ public class LevelsProvider
 
     private void createLevel09()
     {
+        level09.clear();
         level09.addWave(Aimer.class, 1, 50);
         level09.addWave(SparkShooter.class, 1, 200);
         level09.addWave(Aimer.class, 2, 300);

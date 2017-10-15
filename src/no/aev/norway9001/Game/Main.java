@@ -239,7 +239,6 @@ public class Main extends Application
      */
     private void continueGame(Stage stage)
     {
-        loadingLabel.setVisible(true);
         Game game;
         try
         {
