@@ -751,18 +751,21 @@ public class LevelsProvider
         level09.addPowerups(HealthPowerupSmall.class, 2, 4100);
         level09.addPowerups(HealthPowerupSmall.class, 2, 5000);
         level09.addPowerups(HealthPowerupBig.class, 1, 5100);
-        level09.addPowerups(DoubleGunPowerup.class, 1, 6000);
+        level09.addPowerups(LaserPowerup.class, 1, 6000);
         level09.addPowerups(HealthPowerupBig.class, 2, 6100);
         level09.addPowerups(HealthPowerupBig.class, 1, 7000);
         level09.addPowerups(HealthPowerupSmall.class, 4, 7100);
         level09.addPowerups(HealthPowerupSmall.class, 5, 8000);
         level09.addPowerups(HealthPowerupSmall.class, 5, 8100);
+        level09.addPowerups(LaserPowerup.class, 1, 9000);
+        level09.addPowerups(HealthPowerupBig.class, 2, 9100);
+        level09.addPowerups(HealthPowerupBig.class, 3, 9200);
 
         ArrayList<Minelayer> minelayers = new ArrayList<>();
 
         for (int i = 0; i < level08.getNumWaves(); i++)
         {
-            for (Enemy currentEnemy : level08.getWave(i).getShips())
+            for (Enemy currentEnemy : level09.getWave(i).getShips())
             {
                 if (currentEnemy.getClass() == Minelayer.class)
                 {
