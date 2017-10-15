@@ -8,7 +8,7 @@ public class Spark extends Bullet
 
     private static final int DAMAGE = 10;
     private static final double X_SPEED = -15;
-    private static final double Y_SPEED = -8;
+    private static final double Y_SPEED = -16;
     private static final int INTERVAL = 10;
 
     private int counter = INTERVAL / 2;
