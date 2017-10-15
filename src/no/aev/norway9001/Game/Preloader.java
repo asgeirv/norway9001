@@ -18,6 +18,7 @@ public class Preloader extends javafx.application.Preloader
     private Stage preloaderStage;
     private Scene scene;
     private Label progressLabel;
+    private Debugger debugger = Debugger.INSTANCE;
 
     public Preloader()
     {
@@ -70,17 +71,17 @@ public class Preloader extends javafx.application.Preloader
             case BEFORE_LOAD:
                 // Called after Preloader#start is called
                 progressLabel.setText("Loading...");
-                System.out.println("Loading...");
+                debugger.printDebugInfo(this.getClass(), "Loading...");
                 break;
             case BEFORE_INIT:
                 // Called before MyApplication#init is called.
                 progressLabel.setText("Initializing...");
-                System.out.println("Initializing...");
+                debugger.printDebugInfo(this.getClass(), "Initializing...");
                 break;
             case BEFORE_START:
                 // Called after MyApplication#init and before MyApplication#start is called.
                 progressLabel.setText("Starting...");
-                System.out.println("Starting...");
+                debugger.printDebugInfo(this.getClass(), "Starting...");
 
                 preloaderStage.hide();
                 break;
