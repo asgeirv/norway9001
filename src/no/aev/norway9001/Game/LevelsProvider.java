@@ -25,7 +25,7 @@ import java.util.ArrayList;
 /**
  * @author Asgeir Vinkenes
  */
-public class LevelsProvider
+public final class LevelsProvider
 {
 
     public static final LevelsProvider INSTANCE = new LevelsProvider();
@@ -741,6 +741,12 @@ public class LevelsProvider
         level09.addWave(HexaShip.class, 2, 500);
         level09.addWave(Minelayer.class, 4, 200);
         level09.addWave(DiamondShip.class, 3, 300);
+        level09.addWave(Minelayer.class, 4, 200);
+        level09.addWave(Minelayer.class, 5, 300);
+        level09.addWave(Aimer.class, 5, 500);
+        level09.addWave(Bouncer.class, 4, 300);
+        level09.addWave(Aimer.class, 5, 300);
+        level09.addWave(Aimer.class, 6, 300);
 
         level09.addPowerups(HealthPowerupBig.class, 1, 1000);
         level09.addPowerups(HealthPowerupSmall.class, 2, 1100);
@@ -761,10 +767,27 @@ public class LevelsProvider
         level09.addPowerups(LaserPowerup.class, 1, 9000);
         level09.addPowerups(HealthPowerupBig.class, 2, 9100);
         level09.addPowerups(HealthPowerupBig.class, 3, 9200);
+        level09.addPowerups(HealthPowerupSmall.class, 1, 10000);
+        level09.addPowerups(MineSweeper.class, 2, 10100);
+        level09.addPowerups(HealthPowerupBig.class, 3, 10200);
+        level09.addPowerups(HealthPowerupSmall.class, 4, 10300);
+        level09.addPowerups(MineSweeper.class, 2, 11000);
+        level09.addPowerups(TripleGunPowerup.class, 1, 11100);
+        level09.addPowerups(HealthPowerupBig.class, 1, 11200);
+        level09.addPowerups(HealthPowerupBig.class, 1, 11300);
+        level09.addPowerups(HealthPowerupBig.class, 1, 11400);
+        level09.addPowerups(HealthPowerupBig.class, 1, 11500);
+        level09.addPowerups(HealthPowerupBig.class, 1, 11600);
+        level09.addPowerups(HealthPowerupBig.class, 1, 11700);
+        level09.addPowerups(HealthPowerupBig.class, 1, 11800);
+        level09.addPowerups(HealthPowerupBig.class, 1, 11900);
+        level09.addPowerups(HealthPowerupBig.class, 3, 12000);
+        level09.addPowerups(HealthPowerupSmall.class, 4, 12500);
+        level09.addPowerups(HealthPowerupSmall.class, 4, 13000);
 
         ArrayList<Minelayer> minelayers = new ArrayList<>();
 
-        for (int i = 0; i < level08.getNumWaves(); i++)
+        for (int i = 0; i < level09.getNumWaves(); i++)
         {
             for (Enemy currentEnemy : level09.getWave(i).getShips())
             {
