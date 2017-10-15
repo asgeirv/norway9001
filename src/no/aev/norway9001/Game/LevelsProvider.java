@@ -139,6 +139,12 @@ public final class LevelsProvider
         levels.add(level09);
         level09.addBgObj(new ImageView("backgroundObjs/lvl09planet01.png"));
         level09.addBgObj(new ImageView("backgroundObjs/lvl09planet02.png"));
+
+        String lvl10Desc = "Under construction";
+        level10 = new Level(lvl10Desc, new Image("backgrounds/lvl10bg.png"));
+        levels.add(level10);
+        level10.addBgObj(new ImageView("backgroundObjs/lvl10planet01.png"));
+        level10.addBgObj(new ImageView("backgroundObjs/lvl10planet02.png"));
     }
 
     public void createLevel(int levelNumber)
