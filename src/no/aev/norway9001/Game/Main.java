@@ -74,7 +74,7 @@ public class Main extends Application
         }
 
         fonts = new FontsProvider();
-        debugger.printDebugInfo("DEBUG MODE ON");
+        debugger.printDebugInfo(this.getClass(), "DEBUG MODE ON");
 
         stage.setTitle("Norway 9001 Alpha");
         levels = new LevelsProvider();
@@ -169,7 +169,7 @@ public class Main extends Application
      */
     private void updateMainMenu()
     {
-        debugger.printDebugInfo("Updating main menu");
+        debugger.printDebugInfo(this.getClass(), "Updating main menu");
         loadingLabel.setVisible(false);
         if (levelTracker.getCurrentLevel() > 1)
         {
@@ -202,10 +202,10 @@ public class Main extends Application
             if (result.get() == ButtonType.OK)
             {
                 startNewGame(stage);
-                debugger.printDebugInfo("Starting new game");
+                debugger.printDebugInfo(this.getClass(), "Starting new game");
             }
             else
-                debugger.printDebugInfo("Starting new game cancelled");
+                debugger.printDebugInfo(this.getClass(), "Starting new game cancelled");
         }
         else
             startNewGame(stage);
@@ -219,9 +219,9 @@ public class Main extends Application
     private void startNewGame(Stage stage)
     {
         loadingLabel.setVisible(true);
-        debugger.printDebugInfo("Setting game to level 1");
+        debugger.printDebugInfo(this.getClass(), "Setting game to level 1");
         levelTracker.setCurrentLevel(1);
-        debugger.printDebugInfo("Recreating level 1");
+        debugger.printDebugInfo(this.getClass(), "Recreating level 1");
         levels.createLevel(1);
         Game game = new Game(stage, mainMenu, levels.getLevel(1), levelTracker);
         showLevelDesc(stage, game);
@@ -236,17 +236,17 @@ public class Main extends Application
     {
         int currentLevel = levelTracker.getCurrentLevel();
         Game game;
-        debugger.printDebugInfo("Setting game to level " + currentLevel);
+        debugger.printDebugInfo(this.getClass(), "Setting game to level " + currentLevel);
         try
         {
             levels.createLevel(levelTracker.getCurrentLevel());
-            debugger.printDebugInfo("Recreating level " + currentLevel);
+            debugger.printDebugInfo(this.getClass(), "Recreating level " + currentLevel);
             game = new Game(stage, mainMenu, levels.getLevel(currentLevel), levelTracker);
             showLevelDesc(stage, game);
         }
         catch (IndexOutOfBoundsException err)
         {
-            debugger.printDebugInfo("Invalid level, setting start level to 1");
+            debugger.printDebugInfo(this.getClass(), "Invalid level, setting start level to 1");
             levelTracker.setCurrentLevel(1);
             levels.createLevel(1);
             newGameButtonClicked(stage);

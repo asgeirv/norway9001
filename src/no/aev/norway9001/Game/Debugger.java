@@ -31,12 +31,13 @@ public final class Debugger
      * Writes out debug info to system output.
      * This will only happen if debug mode is on.
      *
+     * @param originatingClass The class which sent the debug message.
      * @param msg The message to output.
      */
-    public void printDebugInfo(String msg)
+    public void printDebugInfo(Class originatingClass, String msg)
     {
         if (debug)
-            System.out.println(msg);
+            System.out.println(originatingClass.getSimpleName() + ": " + msg);
     }
 
     public boolean isDebug()

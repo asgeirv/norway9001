@@ -234,7 +234,7 @@ public class Game
             if (timer == level.getWave(currentWave).getTime())
             {
                 spawnEnemies(level.getWave(currentWave).getShips());
-                debugger.printDebugInfo("Sending wave " + currentWave);
+                debugger.printDebugInfo(this.getClass(), "Sending wave " + currentWave);
                 currentWave++;
             }
         }
