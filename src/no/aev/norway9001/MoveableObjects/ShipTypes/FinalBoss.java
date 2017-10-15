@@ -55,8 +55,10 @@ public class FinalBoss extends Enemy
         if (laserCounter >= LASER_COOLDOWN && bulletBatteryMode != MISSILE_MODE)
         {
             Bullet upperLaser = new EnemyLaserBlast(getX() + 80, getY());
+            Bullet middleLaser = new EnemyLaserBlast(getX() + 80, getY() + 140);
             Bullet lowerLaser = new EnemyLaserBlast(getX() + 80, getY() + 280);
             bulletList.add(upperLaser);
+            bulletList.add(middleLaser);
             bulletList.add(lowerLaser);
             laserCounter = 0;
         }
