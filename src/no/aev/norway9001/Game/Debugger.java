@@ -6,11 +6,11 @@ package no.aev.norway9001.Game;
 public class Debugger
 {
 
-    private boolean debug = true;
+    private boolean debug;
 
-    public Debugger()
+    public Debugger(boolean debug)
     {
-
+        this.debug = debug;
     }
 
     /**
