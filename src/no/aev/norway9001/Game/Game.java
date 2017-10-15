@@ -62,7 +62,7 @@ public class Game
     private ObservableList<Bullet> playerBullets = FXCollections.observableArrayList();
     private ObservableList<Powerup> powerups = FXCollections.observableArrayList();
 
-    private Player playerShip = new Player(0, 350, 5);
+    private Player playerShip = new Player(0, (windowHeight / 2) - 25, 5);
     private ArrayList<ImageView> bgObjs = new ArrayList<>();
     private ArrayList<Enemy> enemies = new ArrayList<>();
 
