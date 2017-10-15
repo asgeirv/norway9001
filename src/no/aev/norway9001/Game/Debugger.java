@@ -27,21 +27,13 @@ public final class Debugger
         this.debug = debug;
     }
 
-    /*
-    public static Debugger getInstance() {
-        if(INSTANCE == null) {
-            INSTANCE = new Debugger();
-        }
-        return INSTANCE;
-    }
-    */
-
     /**
      * Writes out debug info to system output.
+     * This will only happen if debug mode is on.
      *
      * @param msg The message to output.
      */
-    public void writeDebugInfo(String msg)
+    public void printDebugInfo(String msg)
     {
         if (debug)
             System.out.println(msg);
