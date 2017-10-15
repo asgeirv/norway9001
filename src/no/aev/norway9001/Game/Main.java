@@ -51,8 +51,7 @@ public class Main extends Application
 
     public Main()
     {
-        progress = new ProgressTracker();
-        levelTracker = progress.getProgress();
+
     }
 
     public static void main(String[] args)
@@ -75,6 +74,8 @@ public class Main extends Application
 
         fonts = new FontsProvider();
         debugger.printDebugInfo(this.getClass(), "DEBUG MODE ON");
+        progress = new ProgressTracker();
+        levelTracker = progress.getProgress();
 
         stage.setTitle("Norway 9001 Alpha");
         levels = new LevelsProvider();
