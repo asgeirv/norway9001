@@ -34,7 +34,7 @@ public class Main extends Application
 
     private Stage stage = new Stage();
     private FontsProvider fonts;
-    private ProgressTracker progress;
+    private ProgressTracker progress = ProgressTracker.INSTANCE;
     private LevelTracker levelTracker;
     private Scene mainMenu;
     private Scene credits;
@@ -74,7 +74,6 @@ public class Main extends Application
 
         fonts = new FontsProvider();
         debugger.printDebugInfo(this.getClass(), "DEBUG MODE ON");
-        progress = new ProgressTracker();
         levelTracker = progress.getProgress();
 
         stage.setTitle("Norway 9001 Alpha");

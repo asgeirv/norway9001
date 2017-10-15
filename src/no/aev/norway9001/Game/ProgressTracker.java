@@ -14,12 +14,13 @@ import java.io.PrintWriter;
  *
  * @author Asgeir Vinkenes
  */
-public class ProgressTracker
+public final class ProgressTracker
 {
 
+    public static final ProgressTracker INSTANCE = new ProgressTracker();
     private Debugger debugger = Debugger.INSTANCE;
 
-    public ProgressTracker()
+    private ProgressTracker()
     {
 
     }
