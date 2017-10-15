@@ -5,6 +5,7 @@ import no.aev.norway9001.MoveableObjects.Enemy;
 import no.aev.norway9001.MoveableObjects.Powerup;
 import no.aev.norway9001.MoveableObjects.Powerups.MineSweeper;
 import no.aev.norway9001.MoveableObjects.ShipTypes.Aimer;
+import no.aev.norway9001.MoveableObjects.ShipTypes.FinalBoss;
 import no.aev.norway9001.MoveableObjects.ShipTypes.Player;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -258,6 +259,7 @@ public class Game
     {
         Enemy currentEnemy;
         Aimer currentAimer;
+        FinalBoss boss;
         int numShips = enemiesToSpawn.size();
         int shipNum;
         int shipDistance;
@@ -274,6 +276,12 @@ public class Game
             {
                 currentAimer = (Aimer) currentEnemy;
                 currentAimer.setPlayer(playerShip);
+            }
+            else if (currentEnemy.getClass() == FinalBoss.class)
+            {
+                boss = (FinalBoss) currentEnemy;
+                boss.setPlayer(playerShip);
+                boss.setScreenBounds(windowWidth, windowHeight);
             }
         }
     }

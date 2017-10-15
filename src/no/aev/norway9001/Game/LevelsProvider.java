@@ -11,6 +11,7 @@ import no.aev.norway9001.MoveableObjects.Powerups.TripleGunPowerup;
 import no.aev.norway9001.MoveableObjects.ShipTypes.Aimer;
 import no.aev.norway9001.MoveableObjects.ShipTypes.Bouncer;
 import no.aev.norway9001.MoveableObjects.ShipTypes.DiamondShip;
+import no.aev.norway9001.MoveableObjects.ShipTypes.FinalBoss;
 import no.aev.norway9001.MoveableObjects.ShipTypes.FlyingSaucer;
 import no.aev.norway9001.MoveableObjects.ShipTypes.HexaShip;
 import no.aev.norway9001.MoveableObjects.ShipTypes.Minelayer;
@@ -821,5 +822,6 @@ public final class LevelsProvider
     private void createLevel10()
     {
         level10.clear();
+        level10.addWave(FinalBoss.class, 1, 100);
     }
 }
