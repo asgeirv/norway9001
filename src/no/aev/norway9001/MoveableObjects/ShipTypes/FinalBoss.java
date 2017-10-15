@@ -10,6 +10,7 @@ import no.aev.norway9001.MoveableObjects.Bullet;
 import no.aev.norway9001.MoveableObjects.BulletTypes.EnemyLaserBlast;
 import no.aev.norway9001.MoveableObjects.BulletTypes.Missile;
 import no.aev.norway9001.MoveableObjects.BulletTypes.OrangeBullet;
+import no.aev.norway9001.MoveableObjects.BulletTypes.Spark;
 import no.aev.norway9001.MoveableObjects.Enemy;
 
 public class FinalBoss extends Enemy
@@ -63,7 +64,7 @@ public class FinalBoss extends Enemy
         if (laserCounter >= LASER_COOLDOWN && bulletBatteryMode != MISSILE_MODE)
         {
             Bullet upperLaser = new EnemyLaserBlast(getX() + 80, getY());
-            Bullet middleLaser = new EnemyLaserBlast(getX() + 80, getY() + 140);
+            Bullet middleLaser = new Spark(getX() + 80, getY() + 140);
             Bullet lowerLaser = new EnemyLaserBlast(getX() + 80, getY() + 280);
             bulletList.add(upperLaser);
             bulletList.add(middleLaser);
