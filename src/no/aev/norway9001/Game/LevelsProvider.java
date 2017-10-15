@@ -28,6 +28,7 @@ import java.util.ArrayList;
 public class LevelsProvider
 {
 
+    public static final LevelsProvider INSTANCE = new LevelsProvider();
     private ArrayList<Level> levels = new ArrayList<>();
     private Level level01;
     private Level level02;
@@ -40,7 +41,7 @@ public class LevelsProvider
     private Level level09;
     private Level level10;
 
-    public LevelsProvider()
+    private LevelsProvider()
     {
         createLevels();
     }

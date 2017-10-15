@@ -41,7 +41,7 @@ public class Main extends Application
     private SpaceButton continueButton;
     private Label loadingLabel;
 
-    private LevelsProvider levels;
+    private LevelsProvider levels = LevelsProvider.INSTANCE;
     private Debugger debugger = Debugger.INSTANCE;
 
     private static final int BUTTON_WIDTH = 300;
@@ -77,7 +77,6 @@ public class Main extends Application
         levelTracker = progress.getProgress();
 
         stage.setTitle("Norway 9001 Alpha");
-        levels = new LevelsProvider();
         setupMainMenu(stage);
         setupCredits(stage);
 
