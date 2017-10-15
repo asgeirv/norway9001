@@ -46,6 +46,7 @@ public class Game
 
     private FontsProvider fonts = new FontsProvider();
     private LevelTracker levelTracker;
+    private Debugger debugger = Debugger.INSTANCE;
 
     private double windowWidth = Screen.getPrimary().getVisualBounds().getWidth();
     private double windowHeight = Screen.getPrimary().getVisualBounds().getHeight();
@@ -233,7 +234,7 @@ public class Game
             if (timer == level.getWave(currentWave).getTime())
             {
                 spawnEnemies(level.getWave(currentWave).getShips());
-                System.out.println("Sending wave " + currentWave);
+                debugger.printDebugInfo("Sending wave " + currentWave);
                 currentWave++;
             }
         }
