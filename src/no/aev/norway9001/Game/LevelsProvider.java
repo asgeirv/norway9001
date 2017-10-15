@@ -112,7 +112,7 @@ public final class LevelsProvider
         level06.addBgObj(new ImageView("backgroundObjs/lvl06planet01.png"));
         level06.addBgObj(new ImageView("backgroundObjs/lvl06planet02.png"));
 
-        String lvl07Desc = "Another system succesfully cleared, you're getting into the groove of things!\n" +
+        String lvl07Desc = "Another system successfully cleared, you're getting into the groove of things!\n" +
                 "The next system, Betelgeuse, once again has a new challenge for you; our enemies have\n" +
                 "have begun arming their own ships with lasers! We currently have no new way of countering\n" +
                 "this new menace so you are on your own. Good luck!";
@@ -122,7 +122,7 @@ public final class LevelsProvider
 
         String lvl08Desc = "Good job, you dealt with the laser gunners of Betelgeuse like it was nothing!\n" +
                 "Now you will be going to the Antares system where our enemies have perfected the art of putting lasers on hexagons\n" +
-                "but that's nothing an ace pilot like you can't deal with.\n" +
+                "but that's nothing an ace pilot like you can't deal with, right?\n" +
                 "Also our scientists have solved the problem of our enemies having access to lasers.\n" +
                 "How, you might ask? Well, have a look for yourself.";
         level08 = new Level(lvl08Desc, new Image("backgrounds/lvl08bg.png"));
@@ -130,7 +130,11 @@ public final class LevelsProvider
         level08.addBgObj(new ImageView("backgroundObjs/lvl08planet01.png"));
         level08.addBgObj(new ImageView("backgroundObjs/lvl08planet02.png"));
 
-        String lvl09Desc = "WIP";
+        String lvl09Desc = "Antares has fallen to your lasers and bullets and whatnot!\n" +
+                "Things are heating up though as we conquer more and more enemy territory.\n" +
+                "You are now going to Epsilon Eridani, where our enemies actually have learnt how to aim!\n" +
+                "Are you prepared to be shot at directly?\n" +
+                "Good luck ace!";
         level09 = new Level(lvl09Desc, new Image("backgrounds/lvl09bg.png"));
         levels.add(level09);
         level09.addBgObj(new ImageView("backgroundObjs/lvl09planet01.png"));
