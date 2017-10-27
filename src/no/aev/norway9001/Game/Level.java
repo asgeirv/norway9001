@@ -4,7 +4,6 @@ import no.aev.norway9001.MoveableObjects.BackgroundObject;
 import no.aev.norway9001.MoveableObjects.Enemy;
 import no.aev.norway9001.MoveableObjects.Powerup;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,11 +54,11 @@ public class Level
     /**
      * Adds a wave to the level.
      *
+     * @param delay    Number of ticks which should pass since the previous wave before the current one spawns.
      * @param shipType The type of ship to add.
      * @param numShips The number of ships to add.
-     * @param delay    Number of ticks which should pass since the previous wave before the current one spawns.
      */
-    public void addWave(Class<? extends Enemy> shipType, int numShips, int delay)
+    public void addWave(int delay, Class<? extends Enemy> shipType, int numShips)
     {
         duration = duration + delay;
         Wave wave = new Wave(duration);
@@ -92,7 +91,7 @@ public class Level
         waves.add(wave);
     }
 
-    public void addPowerups(Class<? extends Powerup> powerupType, int numPowerups, int time)
+    public void addPowerups(int time, Class<? extends Powerup> powerupType, int numPowerups)
     {
         PowerupWave powerupWave = new PowerupWave(time);
         try
@@ -103,6 +102,22 @@ public class Level
         catch (Exception e)
         {
             e.printStackTrace();
+        }
+        powerupWaves.add(powerupWave);
+    }
+
+    /**
+     * Adds a powerup wave to the level.
+     *
+     * @param time Ar what tick the powerup wave should be sent.
+     * @param powerups Powerups to add to the wave.
+     */
+    public void addPowerups(int time, Powerup ... powerups)
+    {
+        PowerupWave powerupWave = new PowerupWave(time);
+        for (Powerup powerup : powerups)
+        {
+            powerupWave.addPowerup(powerup);
         }
         powerupWaves.add(powerupWave);
     }
