@@ -226,7 +226,6 @@ public final class LevelsProvider
     private void createLevel01()
     {
         level01.clear();
-        System.out.println("Adding waves to level 1");
         level01.addWave(SquareShip.class, 3, 50);
         level01.addWave(FlyingSaucer.class, 3, 1000);
         level01.addWave(TriangleShip.class, 3, 1000);
