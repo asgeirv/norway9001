@@ -19,11 +19,14 @@ public class FinalBoss extends Enemy
 
     private static final double SPEED = 0.5;
     private static final int MAX_HP = 1000;
-    private static final int POINTS = 15;
+    private static final int POINTS = 10000;
     private static final int LASER_COOLDOWN = 400;
     private static final int BULLET_COOLDOWN = 200;
     private static final int MAX_SHOTS = 10;
     private boolean movingDown = false;
+    private boolean movingLeft = false;
+    private int horizontalMovementCounter = 0;
+    private static final int MAX_HORIZONTAL_MOVEMENT = 200;
     private int laserCounter = 0;
     private int bulletCounter = BULLET_COOLDOWN;
     private int shotsLeft = MAX_SHOTS;
@@ -36,7 +39,7 @@ public class FinalBoss extends Enemy
     private static final int AIMBOT_MODE = 2;
     private static final int MISSILE_MODE = 3;
 
-    // Ship states
+    // Ship health states
     private static final Image HEALTHY_SPRITE = new Image("ships/finalboss-healthy.png");
     private static final Image DAMAGED_SPRITE = new Image("ships/finalboss-damaged.png");
     private static final Image CRITICAL_SPRITE = new Image("ships/finalboss-critical.png");
@@ -138,14 +141,13 @@ public class FinalBoss extends Enemy
     {
         //debugger.printDebugInfo(this.getClass(), "Boss coordinates: " + getX() + "," + getY());
         updateAppearance();
+        horizontalMovementCounter++;
         if (getX() > screenWidth - 250)
             super.move();
         else
         {
             if (movingDown)
-            {
                 setY(getY() + getSpeed());
-            }
             else
             {
                 setY(getY() - getSpeed());
@@ -155,6 +157,17 @@ public class FinalBoss extends Enemy
                 movingDown = true;
             else if (getY() > screenHeight - 400)
                 movingDown = false;
+
+            if (horizontalMovementCounter >= MAX_HORIZONTAL_MOVEMENT)
+            {
+                movingLeft = !movingLeft;
+                horizontalMovementCounter = 0;
+            }
+
+            if (movingLeft)
+                setX(getX() - getSpeed());
+            else
+                setX(getX() + getSpeed());
         }
     }
 
