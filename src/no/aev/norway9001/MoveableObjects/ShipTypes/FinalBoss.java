@@ -93,6 +93,8 @@ public class FinalBoss extends Enemy
             {
                 bullet1 = new OrangeBullet(getX(), getY() + 135);
                 bullet2 = new OrangeBullet(getX(), getY() + 145);
+                bulletList.add(new OrangeBullet(getX() + 80, getY()));
+                bulletList.add(new OrangeBullet(getX() + 80, getY() + 280));
             }
 
             bulletList.add(bullet1);
@@ -105,7 +107,7 @@ public class FinalBoss extends Enemy
             }
             else if (bulletBatteryMode == AIMBOT_MODE)
             {
-                aimbot.aim(this,bullet1, bullet2);
+                aimbot.aim(this, bullet1, bullet2);
             }
 
             if (shotsLeft > 0)
