@@ -64,9 +64,9 @@ public class FinalBoss extends Enemy
         // FIRE MAH LASERS
         if (laserCounter >= LASER_COOLDOWN && bulletBatteryMode != MISSILE_MODE)
         {
-            Bullet upperLaser = new EnemyLaserBlast(getX() + 80, getY());
-            Bullet middleLaser = new Spark(getX() + 80, getY() + 140);
-            Bullet lowerLaser = new EnemyLaserBlast(getX() + 80, getY() + 280);
+            Bullet upperLaser = new EnemyLaserBlast(getX() + 20, getY());
+            Bullet middleLaser = new Spark(getX() + 20, getY() + 80);
+            Bullet lowerLaser = new EnemyLaserBlast(getX() + 20, getY() + 220);
             bulletList.add(upperLaser);
             bulletList.add(middleLaser);
             bulletList.add(lowerLaser);
