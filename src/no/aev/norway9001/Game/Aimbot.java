@@ -14,6 +14,7 @@ public final class Aimbot
     {
 
     }
+
     public void setPlayer(Player player)
     {
         this.player = player;
@@ -21,22 +22,32 @@ public final class Aimbot
 
     public void aim(Enemy enemy, Bullet... bullets)
     {
-        double bulletSpeed = bullets[0].getxSpeed();
-
-        // Calculate distances between ship and player
-        double xDist = enemy.getX() - player.getX();
-        double yDist = enemy.getY() - player.getY();
-        double dist = Math.sqrt(xDist * xDist + yDist * yDist);
-
-        // Calculate sine and cosine of the angle between ship and player
-        double sin = yDist / dist;
-        double cos = xDist / dist;
-
-        // Calculate x and y speeds
-        for (Bullet bullet : bullets)
+        try
         {
-            bullet.setxSpeed(bulletSpeed * cos);
-            bullet.setySpeed(bulletSpeed * sin);
+            double bulletSpeed = bullets[0].getxSpeed();
+
+            // Calculate distances between ship and player
+            double xDist = enemy.getX() - player.getX();
+            double yDist = enemy.getY() - player.getY();
+            double dist = Math.sqrt(xDist * xDist + yDist * yDist);
+
+            // Calculate sine and cosine of the angle between ship and player
+            double sin = yDist / dist;
+            double cos = xDist / dist;
+
+            // Calculate x and y speeds
+            for (Bullet bullet : bullets)
+            {
+                bullet.setxSpeed(bulletSpeed * cos);
+                bullet.setySpeed(bulletSpeed * sin);
+            }
+        }
+        catch (NullPointerException e)
+        {
+            System.out.println("**********" +
+                    "\nNullPointerException: Have you specified a Player object?" +
+                    "\n*******");
+            e.printStackTrace();
         }
     }
 }
