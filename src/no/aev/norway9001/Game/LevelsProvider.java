@@ -1,5 +1,6 @@
 package no.aev.norway9001.Game;
 
+import no.aev.norway9001.MoveableObjects.BackgroundObject;
 import no.aev.norway9001.MoveableObjects.Enemy;
 import no.aev.norway9001.MoveableObjects.Powerups.DoubleGunPowerup;
 import no.aev.norway9001.MoveableObjects.Powerups.HealthPowerupBig;
@@ -60,8 +61,8 @@ public final class LevelsProvider
                 "Shoot: Space";
         level01 = new Level(lvl01Desc, new Image("backgrounds/lvl01bg.png"));
         levels.add(level01);
-        level01.addBgObj(new ImageView("backgroundObjs/lvl01planet01.png"));
-        level01.addBgObj(new ImageView("backgroundObjs/lvl01planet02.png"));
+        level01.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl01planet01.png")));
+        level01.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl01planet02.png"), 0.2));
 
         String lvl02Desc = "Well done! The Sol system is now fully under Norwegian control.\n" +
                 "Did you notice the green crosses which RAIN FROM THE SKY and heal you?\n" +
@@ -70,8 +71,8 @@ public final class LevelsProvider
                 "Good luck pilot!";
         level02 = new Level(lvl02Desc, new Image("backgrounds/lvl02bg.png"));
         levels.add(level02);
-        level02.addBgObj(new ImageView("backgroundObjs/lvl02planet01.png"));
-        level02.addBgObj(new ImageView("backgroundObjs/lvl02planet02.png"));
+        level02.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl02planet01.png")));
+        level02.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl02planet02.png")));
 
         String lvl03Desc = "Congratulations! The Alpha Centauri system is now ours!\n" +
                 "Clearly you are a capable pilot; with your skill Norway can certainly take over the entire universe.\n" +
@@ -80,8 +81,8 @@ public final class LevelsProvider
                 "Good flying!";
         level03 = new Level(lvl03Desc, new Image("backgrounds/lvl03bg.png"));
         levels.add(level03);
-        level03.addBgObj(new ImageView("backgroundObjs/lvl03planet01.png"));
-        level03.addBgObj(new ImageView("backgroundObjs/lvl03planet02.png"));
+        level03.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl03planet01.png")));
+        level03.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl03planet02.png")));
 
         String lvl04Desc = "Well done! You have captured Tau Ceti. \n" +
                 "We can now move on to the Rigel system. Here you will encounter a new powerup; the Shield.\n" +
@@ -89,9 +90,9 @@ public final class LevelsProvider
                 "Good luck pilot!";
         level04 = new Level(lvl04Desc, new Image("backgrounds/lvl04bg.png"));
         levels.add(level04);
-        level04.addBgObj(new ImageView("backgroundObjs/lvl04planet01.png"));
-        level04.addBgObj(new ImageView("backgroundObjs/lvl04planet02.png"));
-        level04.addBgObj(new ImageView("backgroundObjs/lvl04planet03.png"));
+        level04.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl04planet01.png")));
+        level04.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl04planet02.png")));
+        level04.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl04planet03.png")));
 
         String lvl05Desc = "Good job on securing the Rigel system! We can now move on to the Serious, er, Sirius System.\n" +
                 "Scouts report that you will encounter a new enemy ship type here; the Bouncer.\n" +
@@ -99,8 +100,8 @@ public final class LevelsProvider
                 "Go get'em pilot!";
         level05 = new Level(lvl05Desc, new Image("backgrounds/lvl05bg.png"));
         levels.add(level05);
-        level05.addBgObj(new ImageView("backgroundObjs/lvl05planet01.png"));
-        level05.addBgObj(new ImageView("backgroundObjs/lvl05planet02.png"));
+        level05.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl05planet01.png")));
+        level05.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl05planet02.png")));
 
         String lvl06Desc = "Siriusly well done! You obviously are a very Sirius pilot.\n" +
                 "Next up is Aldebaran, were our enemies appear to have come across a new type of weapon\n" +
@@ -110,8 +111,8 @@ public final class LevelsProvider
                 "Good luck!";
         level06 = new Level(lvl06Desc, new Image("backgrounds/lvl06bg.png"));
         levels.add(level06);
-        level06.addBgObj(new ImageView("backgroundObjs/lvl06planet01.png"));
-        level06.addBgObj(new ImageView("backgroundObjs/lvl06planet02.png"));
+        level06.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl06planet01.png")));
+        level06.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl06planet02.png")));
 
         String lvl07Desc = "Another system successfully cleared, you're getting into the groove of things!\n" +
                 "The next system, Betelgeuse, once again has a new challenge for you; our enemies have\n" +
@@ -119,7 +120,7 @@ public final class LevelsProvider
                 "this new menace so you are on your own. Good luck!";
         level07 = new Level(lvl07Desc, new Image("backgrounds/lvl07bg.png"));
         levels.add(level07);
-        level07.addBgObj(new ImageView("backgroundObjs/lvl07planet01.png"));
+        level07.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl07planet01.png"), 0.2));
 
         String lvl08Desc = "Good job, you dealt with the laser gunners of Betelgeuse like it was nothing!\n" +
                 "Now you will be going to the Antares system where our enemies have perfected the art of putting lasers on hexagons\n" +
@@ -128,8 +129,8 @@ public final class LevelsProvider
                 "How, you might ask? Well, have a look for yourself.";
         level08 = new Level(lvl08Desc, new Image("backgrounds/lvl08bg.png"));
         levels.add(level08);
-        level08.addBgObj(new ImageView("backgroundObjs/lvl08planet01.png"));
-        level08.addBgObj(new ImageView("backgroundObjs/lvl08planet02.png"));
+        level08.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl08planet01.png")));
+        level08.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl08planet02.png")));
 
         String lvl09Desc = "Antares has fallen to your lasers and bullets and whatnot!\n" +
                 "Things are heating up though as we conquer more and more enemy territory.\n" +
@@ -138,14 +139,14 @@ public final class LevelsProvider
                 "Good luck ace!";
         level09 = new Level(lvl09Desc, new Image("backgrounds/lvl09bg.png"));
         levels.add(level09);
-        level09.addBgObj(new ImageView("backgroundObjs/lvl09planet01.png"));
-        level09.addBgObj(new ImageView("backgroundObjs/lvl09planet02.png"));
+        level09.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl09planet01.png")));
+        level09.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl09planet02.png")));
 
         String lvl10Desc = "Under construction";
         level10 = new Level(lvl10Desc, new Image("backgrounds/lvl10bg.png"));
         levels.add(level10);
-        level10.addBgObj(new ImageView("backgroundObjs/lvl10planet01.png"));
-        level10.addBgObj(new ImageView("backgroundObjs/lvl10planet02.png"));
+        level10.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl10planet01.png")));
+        level10.addBgObj(new BackgroundObject(new Image("backgroundObjs/lvl10planet02.png")));
     }
 
     public void createLevel(int levelNumber)

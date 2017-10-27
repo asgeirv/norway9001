@@ -1,5 +1,6 @@
 package no.aev.norway9001.Game;
 
+import no.aev.norway9001.MoveableObjects.BackgroundObject;
 import no.aev.norway9001.MoveableObjects.Bullet;
 import no.aev.norway9001.MoveableObjects.Enemy;
 import no.aev.norway9001.MoveableObjects.Powerup;
@@ -63,7 +64,7 @@ public class Game
     private ObservableList<Powerup> powerups = FXCollections.observableArrayList();
 
     private Player playerShip = new Player(0, (windowHeight / 2) - 25, 5);
-    private ArrayList<ImageView> bgObjs = new ArrayList<>();
+    private ArrayList<BackgroundObject> bgObjs = new ArrayList<>();
     private ArrayList<Enemy> enemies = new ArrayList<>();
 
     private Label infoLabelBig = new Label();
@@ -142,7 +143,7 @@ public class Game
 
         // Set up background objects
         bgObjs.addAll(level.getBgObjs());
-        for (ImageView bgObj : bgObjs)
+        for (BackgroundObject bgObj : bgObjs)
         {
             planetsPane.getChildren().add(bgObj);
             bgObj.setX(windowWidth + 10);
@@ -258,8 +259,6 @@ public class Game
     private void spawnEnemies(ArrayList<Enemy> enemiesToSpawn)
     {
         Enemy currentEnemy;
-        Aimer currentAimer;
-        FinalBoss boss;
         int numShips = enemiesToSpawn.size();
         int shipDistance;
         double shipHeight;
@@ -275,11 +274,13 @@ public class Game
             currentEnemy.setY((shipDistance * i) - (shipHeight / 2));
             if (currentEnemy.getClass() == Aimer.class)
             {
+                Aimer currentAimer;
                 currentAimer = (Aimer) currentEnemy;
                 currentAimer.setPlayer(playerShip);
             }
             else if (currentEnemy.getClass() == FinalBoss.class)
             {
+                FinalBoss boss;
                 boss = (FinalBoss) currentEnemy;
                 boss.setPlayer(playerShip);
                 boss.setScreenBounds(windowWidth, windowHeight);
@@ -449,12 +450,12 @@ public class Game
     }
 
     /**
-     * Move the planet(s) in the background.
+     * Move background objects in the background.
      */
     private void moveBgObjs()
     {
-        ImageView bgObj = bgObjs.get(currentBgObj);
-        if (bgObj.getX() < -500)
+        BackgroundObject bgObj = bgObjs.get(currentBgObj);
+        if (bgObj.getX() < -bgObj.getBoundsInParent().getWidth() + 10)
         {
             bgObj.setX(windowWidth + 10);
             bgObj.setY((double) rng.nextInt((int) windowHeight));
@@ -465,7 +466,7 @@ public class Game
         }
         else
         {
-            bgObj.setX(bgObj.getX() - 0.5);
+            bgObj.move();
         }
     }
 

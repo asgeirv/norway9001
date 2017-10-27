@@ -1,5 +1,6 @@
 package no.aev.norway9001.Game;
 
+import no.aev.norway9001.MoveableObjects.BackgroundObject;
 import no.aev.norway9001.MoveableObjects.Enemy;
 import no.aev.norway9001.MoveableObjects.Powerup;
 import javafx.scene.image.Image;
@@ -21,7 +22,7 @@ public class Level
     private String desc;
     private int duration = 0; //measured in ticks
     private Image bg;
-    private ArrayList<ImageView> bgObjs = new ArrayList<>();
+    private ArrayList<BackgroundObject> bgObjs = new ArrayList<>();
     private ArrayList<Wave> waves = new ArrayList<>();
     private ArrayList<PowerupWave> powerupWaves = new ArrayList<>();
 
@@ -70,6 +71,23 @@ public class Level
         catch (Exception e)
         {
             e.printStackTrace();
+        }
+        waves.add(wave);
+    }
+
+    /**
+     * Adds a wave to the level.
+     *
+     * @param delay Number of ticks which should pass since the previous wave before the current one spawns.
+     * @param enemies Enemies to add to the wave.
+     */
+    public void addWave(int delay, Enemy ... enemies)
+    {
+        duration = duration + delay;
+        Wave wave = new Wave(duration);
+        for (Enemy enemy : enemies)
+        {
+            wave.addShip(enemy);
         }
         waves.add(wave);
     }
@@ -145,7 +163,7 @@ public class Level
      *
      * @return An ArrayList of all the background object images.
      */
-    public ArrayList<ImageView> getBgObjs()
+    public ArrayList<BackgroundObject> getBgObjs()
     {
         return bgObjs;
     }
@@ -155,7 +173,7 @@ public class Level
      *
      * @param img An image to add as background object.
      */
-    public void addBgObj(ImageView img)
+    public void addBgObj(BackgroundObject img)
     {
         bgObjs.add(img);
     }
