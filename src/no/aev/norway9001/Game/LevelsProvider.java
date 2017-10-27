@@ -760,6 +760,7 @@ public final class LevelsProvider
         level09.addWave(300, Bouncer.class, 4);
         level09.addWave(300, Aimer.class, 5);
         level09.addWave(300, Aimer.class, 6);
+        level09.addWave(500, new TriangleShip(), new Aimer(), new SquareShip(), new SquareShip(), new Aimer(), new TriangleShip());
 
         level09.addPowerups(1000, HealthPowerupBig.class, 1);
         level09.addPowerups(1100, HealthPowerupSmall.class, 2);
@@ -797,6 +798,7 @@ public final class LevelsProvider
         level09.addPowerups(12000, HealthPowerupBig.class, 3);
         level09.addPowerups(12500, HealthPowerupSmall.class, 4);
         level09.addPowerups(13000, HealthPowerupSmall.class, 4);
+        level09.addPowerups(13500, MineSweeper.class, 2);
         level09.addPowerups(14000, new HealthPowerupSmall(), new HealthPowerupBig(), new HealthPowerupBig(), new HealthPowerupSmall());
 
         ArrayList<Minelayer> minelayers = new ArrayList<>();
