@@ -5,6 +5,7 @@ import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
+import no.aev.norway9001.Game.Aimbot;
 import no.aev.norway9001.Game.Debugger;
 import no.aev.norway9001.MoveableObjects.Bullet;
 import no.aev.norway9001.MoveableObjects.BulletTypes.EnemyLaserBlast;
@@ -26,7 +27,7 @@ public class FinalBoss extends Enemy
     private int laserCounter = 0;
     private int bulletCounter = BULLET_COOLDOWN;
     private int shotsLeft = MAX_SHOTS;
-    private Player player;
+    private Aimbot aimbot;
 
     // Bullet battery modes
     private int bulletBatteryMode = 0;
@@ -104,7 +105,7 @@ public class FinalBoss extends Enemy
             }
             else if (bulletBatteryMode == AIMBOT_MODE)
             {
-                aim(bullet1, bullet2);
+                aimbot.aim(this,bullet1, bullet2);
             }
 
             if (shotsLeft > 0)
@@ -183,35 +184,9 @@ public class FinalBoss extends Enemy
         // TODO: Add code for a cooler death animation
     }
 
-    /**
-     * Aims a collection of bullets to aim at the player.
-     *
-     * @param bullets The bullets to aim at the player.
-     */
-    private void aim(Bullet ... bullets)
+    public void setAimbot(Aimbot aimbot)
     {
-        double bulletSpeed = bullets[0].getxSpeed();
-
-        // Calculate distances between ship and player
-        double xDist = getX() - player.getX();
-        double yDist = getY() - player.getY();
-        double dist = Math.sqrt(xDist * xDist + yDist * yDist);
-
-        // Calculate sine and cosine of the angle between ship and player
-        double sin = yDist / dist;
-        double cos = xDist / dist;
-
-        // Calculate x and y speeds
-        for (Bullet bullet : bullets)
-        {
-            bullet.setxSpeed(bulletSpeed * cos);
-            bullet.setySpeed(bulletSpeed * sin);
-        }
-    }
-
-    public void setPlayer(Player player)
-    {
-        this.player = player;
+        this.aimbot = aimbot;
     }
 
     public void setScreenBounds(double width, double height)

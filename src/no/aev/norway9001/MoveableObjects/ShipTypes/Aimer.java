@@ -2,6 +2,7 @@ package no.aev.norway9001.MoveableObjects.ShipTypes;
 
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
+import no.aev.norway9001.Game.Aimbot;
 import no.aev.norway9001.MoveableObjects.Bullet;
 import no.aev.norway9001.MoveableObjects.BulletTypes.OrangeBullet;
 import no.aev.norway9001.MoveableObjects.Enemy;
@@ -17,7 +18,7 @@ public class Aimer extends Enemy
     private static final int POINTS = 15;
     private static final int COOLDOWN = 200;
     private int counter = 4;
-    private Player player;
+    private Aimbot aimbot;
 
     public Aimer()
     {
@@ -37,21 +38,7 @@ public class Aimer extends Enemy
         if (getShotCooldown() <= 0)
         {
             Bullet newBullet = new OrangeBullet(getX(), getY() + 15);
-            double bulletSpeed = newBullet.getxSpeed();
-
-            // Calculate distances between ship and player
-            double xDist = getX() - player.getX();
-            double yDist = getY() - player.getY();
-            double dist = Math.sqrt(xDist * xDist + yDist * yDist);
-
-            // Calculate sine and cosine of the angle between ship and player
-            double sin = yDist / dist;
-            double cos = xDist / dist;
-
-            // Calculate x and y speeds
-            newBullet.setxSpeed(bulletSpeed * cos);
-            newBullet.setySpeed(bulletSpeed * sin);
-
+            aimbot.aim(this, newBullet);
             bulletList.add(newBullet);
             if (counter > 0)
             {
@@ -68,8 +55,8 @@ public class Aimer extends Enemy
             setShotCooldown(getShotCooldown() - 1);
     }
 
-    public void setPlayer(Player player)
+    public void setAimbot(Aimbot aimbot)
     {
-        this.player = player;
+        this.aimbot = aimbot;
     }
 }

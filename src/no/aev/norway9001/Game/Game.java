@@ -48,6 +48,7 @@ public class Game
 
     private FontsProvider fonts = new FontsProvider();
     private LevelTracker levelTracker;
+    private Aimbot aimbot;
     private Debugger debugger = Debugger.INSTANCE;
 
     private double windowWidth = Screen.getPrimary().getVisualBounds().getWidth();
@@ -84,6 +85,7 @@ public class Game
         this.mainMenu = mainMenu;
         this.level = level;
         this.levelTracker = levelTracker;
+        aimbot = new Aimbot(playerShip);
 
         windowWidth = Screen.getPrimary().getVisualBounds().getWidth();
         windowHeight = Screen.getPrimary().getVisualBounds().getHeight();
@@ -276,13 +278,13 @@ public class Game
             {
                 Aimer currentAimer;
                 currentAimer = (Aimer) currentEnemy;
-                currentAimer.setPlayer(playerShip);
+                currentAimer.setAimbot(aimbot);
             }
             else if (currentEnemy.getClass() == FinalBoss.class)
             {
                 FinalBoss boss;
                 boss = (FinalBoss) currentEnemy;
-                boss.setPlayer(playerShip);
+                boss.setAimbot(aimbot);
                 boss.setScreenBounds(windowWidth, windowHeight);
             }
         }
