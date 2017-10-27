@@ -45,8 +45,8 @@ public final class Aimbot
         catch (NullPointerException e)
         {
             System.out.println("**********" +
-                    "\nNullPointerException: Have you specified a Player object?" +
-                    "\n*******");
+                    "\nHave you specified a Player object?" +
+                    "\n**********");
             e.printStackTrace();
         }
     }
