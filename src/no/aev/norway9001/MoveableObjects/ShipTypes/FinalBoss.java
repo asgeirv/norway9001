@@ -36,9 +36,9 @@ public class FinalBoss extends Enemy
     private static final int MISSILE_MODE = 3;
 
     // Ship states
-    private Image healthySprite = new Image("ships/finalboss-healthy.png");
-    private Image damagedSprite = new Image("ships/finalboss-damaged.png");
-    private Image criticalSprite = new Image("ships/finalboss-critical.png");
+    private static final Image HEALTHY_SPRITE = new Image("ships/finalboss-healthy.png");
+    private static final Image DAMAGED_SPRITE = new Image("ships/finalboss-damaged.png");
+    private static final Image CRITICAL_SPRITE = new Image("ships/finalboss-critical.png");
 
     private Debugger debugger = Debugger.INSTANCE;
 
@@ -172,11 +172,11 @@ public class FinalBoss extends Enemy
     private void updateAppearance()
     {
         if (getCurrentHP() > MAX_HP * 0.67)
-            setImage(healthySprite);
+            setImage(HEALTHY_SPRITE);
         else if (getCurrentHP() > MAX_HP * 0.33)
-            setImage(damagedSprite);
+            setImage(DAMAGED_SPRITE);
         else
-            setImage(criticalSprite);
+            setImage(CRITICAL_SPRITE);
     }
 
     @Override
