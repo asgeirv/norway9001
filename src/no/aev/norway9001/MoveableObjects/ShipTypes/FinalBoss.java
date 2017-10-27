@@ -104,22 +104,7 @@ public class FinalBoss extends Enemy
             }
             else if (bulletBatteryMode == AIMBOT_MODE)
             {
-                double bulletSpeed = bullet1.getxSpeed();
-
-                // Calculate distances between ship and player
-                double xDist = getX() - player.getX();
-                double yDist = getY() - player.getY();
-                double dist = Math.sqrt(xDist * xDist + yDist * yDist);
-
-                // Calculate sine and cosine of the angle between ship and player
-                double sin = yDist / dist;
-                double cos = xDist / dist;
-
-                // Calculate x and y speeds
-                bullet1.setxSpeed(bulletSpeed * cos);
-                bullet1.setySpeed(bulletSpeed * sin);
-                bullet2.setxSpeed(bulletSpeed * cos);
-                bullet2.setySpeed(bulletSpeed * sin);
+                aim(bullet1, bullet2);
             }
 
             if (shotsLeft > 0)
@@ -196,6 +181,32 @@ public class FinalBoss extends Enemy
         death.setCycleCount(1);
         death.play();
         // TODO: Add code for a cooler death animation
+    }
+
+    /**
+     * Aims a collection of bullets to aim at the player.
+     *
+     * @param bullets The bullets to aim at the player.
+     */
+    private void aim(Bullet ... bullets)
+    {
+        double bulletSpeed = bullets[0].getxSpeed();
+
+        // Calculate distances between ship and player
+        double xDist = getX() - player.getX();
+        double yDist = getY() - player.getY();
+        double dist = Math.sqrt(xDist * xDist + yDist * yDist);
+
+        // Calculate sine and cosine of the angle between ship and player
+        double sin = yDist / dist;
+        double cos = xDist / dist;
+
+        // Calculate x and y speeds
+        for (Bullet bullet : bullets)
+        {
+            bullet.setxSpeed(bulletSpeed * cos);
+            bullet.setySpeed(bulletSpeed * sin);
+        }
     }
 
     public void setPlayer(Player player)
