@@ -80,17 +80,18 @@ public class FinalBoss extends Enemy
             Bullet bullet1;
             Bullet bullet2;
 
-            if (bulletBatteryMode != MISSILE_MODE)
+            if (bulletBatteryMode == MISSILE_MODE)
             {
-                bullet1 = new OrangeBullet(getX(), getY() + 135);
-                bullet2 = new OrangeBullet(getX(), getY() + 145);
-            }
-            else
-            {
+
                 bullet1 = new Missile(getX(), getY() + 135);
                 bullet2 = new Missile(getX(), getY() + 135);
                 bulletList.add(new Missile(getX() + 80, getY()));
                 bulletList.add(new Missile(getX() + 80, getY() + 280));
+            }
+            else
+            {
+                bullet1 = new OrangeBullet(getX(), getY() + 135);
+                bullet2 = new OrangeBullet(getX(), getY() + 145);
             }
 
             bulletList.add(bullet1);
