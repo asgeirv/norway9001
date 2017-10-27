@@ -47,7 +47,7 @@ public class Main extends Application
     private static final int BUTTON_WIDTH = 300;
     private static final int BUTTON_WIDTH_HOVER = 350;
     private static final String VERSION_MSG = "Norway 9001 Prototype";
-    private static final String COPYRIGHT_MSG = "©AEVcorp 2017";
+    private static final String COPYRIGHT_MSG = "©Asgeir Vinkenes 2017";
 
     public Main()
     {
