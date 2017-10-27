@@ -18,7 +18,7 @@ public class Aimer extends Enemy
     private static final int POINTS = 15;
     private static final int COOLDOWN = 200;
     private int counter = 4;
-    private Aimbot aimbot;
+    private Aimbot aimbot = Aimbot.INSTANCE;
 
     public Aimer()
     {
@@ -53,10 +53,5 @@ public class Aimer extends Enemy
         }
         else
             setShotCooldown(getShotCooldown() - 1);
-    }
-
-    public void setAimbot(Aimbot aimbot)
-    {
-        this.aimbot = aimbot;
     }
 }

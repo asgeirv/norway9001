@@ -4,12 +4,17 @@ import no.aev.norway9001.MoveableObjects.Bullet;
 import no.aev.norway9001.MoveableObjects.Enemy;
 import no.aev.norway9001.MoveableObjects.ShipTypes.Player;
 
-public class Aimbot
+public final class Aimbot
 {
 
+    public static final Aimbot INSTANCE = new Aimbot();
     private Player player;
 
-    public Aimbot(Player player)
+    private Aimbot()
+    {
+
+    }
+    public void setPlayer(Player player)
     {
         this.player = player;
     }

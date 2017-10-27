@@ -30,7 +30,6 @@ public class FinalBoss extends Enemy
     private int laserCounter = 0;
     private int bulletCounter = BULLET_COOLDOWN;
     private int shotsLeft = MAX_SHOTS;
-    private Aimbot aimbot;
 
     // Bullet battery modes
     private int bulletBatteryMode = 0;
@@ -45,6 +44,7 @@ public class FinalBoss extends Enemy
     private static final Image CRITICAL_SPRITE = new Image("ships/finalboss-critical.png");
 
     private Debugger debugger = Debugger.INSTANCE;
+    private Aimbot aimbot = Aimbot.INSTANCE;
 
     private double screenWidth;
     private double screenHeight;
@@ -197,11 +197,6 @@ public class FinalBoss extends Enemy
         death.setCycleCount(1);
         death.play();
         // TODO: Add code for a cooler death animation
-    }
-
-    public void setAimbot(Aimbot aimbot)
-    {
-        this.aimbot = aimbot;
     }
 
     public void setScreenBounds(double width, double height)
