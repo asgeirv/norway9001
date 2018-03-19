@@ -43,8 +43,8 @@ public class FinalBoss extends Enemy
     private static final Image DAMAGED_SPRITE = new Image("ships/finalboss-damaged.png");
     private static final Image CRITICAL_SPRITE = new Image("ships/finalboss-critical.png");
 
-    private Debugger debugger = Debugger.INSTANCE;
-    private Aimbot aimbot = Aimbot.INSTANCE;
+    private Debugger debugger = Debugger.getInstance();
+    private Aimbot aimbot = Aimbot.getInstance();
 
     private double screenWidth;
     private double screenHeight;

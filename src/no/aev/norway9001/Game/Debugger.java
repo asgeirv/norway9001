@@ -6,7 +6,7 @@ package no.aev.norway9001.Game;
 public final class Debugger
 {
 
-    public static final Debugger INSTANCE = new Debugger();
+    private static Debugger instance;
     private boolean debug;
 
     /**
@@ -15,6 +15,16 @@ public final class Debugger
     private Debugger()
     {
         debug = false;
+    }
+
+    public static Debugger getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new Debugger();
+        }
+
+        return instance;
     }
 
     /**

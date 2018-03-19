@@ -7,12 +7,22 @@ import no.aev.norway9001.MoveableObjects.ShipTypes.Player;
 public final class Aimbot
 {
 
-    public static final Aimbot INSTANCE = new Aimbot();
+    private static Aimbot instance;
     private Player player;
 
     private Aimbot()
     {
 
+    }
+
+    public static Aimbot getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new Aimbot();
+        }
+
+        return instance;
     }
 
     public void setPlayer(Player player)

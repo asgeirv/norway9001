@@ -18,7 +18,7 @@ public class Preloader extends javafx.application.Preloader
     private Stage preloaderStage;
     private Scene scene;
     private Label progressLabel;
-    private Debugger debugger = Debugger.INSTANCE;
+    private Debugger debugger = Debugger.getInstance();
 
     public Preloader()
     {

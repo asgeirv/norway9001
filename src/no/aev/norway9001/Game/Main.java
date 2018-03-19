@@ -34,15 +34,15 @@ public class Main extends Application
 
     private Stage stage = new Stage();
     private FontsProvider fonts;
-    private ProgressTracker progress = ProgressTracker.INSTANCE;
+    private ProgressTracker progress = ProgressTracker.getInstance();
     private LevelTracker levelTracker;
     private Scene mainMenu;
     private Scene credits;
     private SpaceButton continueButton;
     private Label loadingLabel;
 
-    private LevelsProvider levels = LevelsProvider.INSTANCE;
-    private Debugger debugger = Debugger.INSTANCE;
+    private LevelsProvider levels = LevelsProvider.getInstance();
+    private Debugger debugger = Debugger.getInstance();
 
     private static final int BUTTON_WIDTH = 300;
     private static final int BUTTON_WIDTH_HOVER = 350;

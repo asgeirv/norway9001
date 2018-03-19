@@ -18,7 +18,7 @@ public class Aimer extends Enemy
     private static final int POINTS = 15;
     private static final int COOLDOWN = 200;
     private int counter = 4;
-    private Aimbot aimbot = Aimbot.INSTANCE;
+    private Aimbot aimbot = Aimbot.getInstance();
 
     public Aimer()
     {

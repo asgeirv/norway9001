@@ -17,12 +17,22 @@ import java.io.PrintWriter;
 public final class ProgressTracker
 {
 
-    public static final ProgressTracker INSTANCE = new ProgressTracker();
-    private Debugger debugger = Debugger.INSTANCE;
+    public static ProgressTracker instance;
+    private Debugger debugger = Debugger.getInstance();
 
     private ProgressTracker()
     {
 
+    }
+
+    public static ProgressTracker getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new ProgressTracker();
+        }
+
+        return instance;
     }
 
     /**
@@ -33,7 +43,7 @@ public final class ProgressTracker
      */
     public LevelTracker getProgress()
     {
-        LevelTracker progress = LevelTracker.INSTANCE;
+        LevelTracker progress = LevelTracker.getInstance();
 
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(new FileInputStream("norway.9001"))))

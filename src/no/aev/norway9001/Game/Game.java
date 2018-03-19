@@ -48,8 +48,8 @@ public class Game
 
     private FontsProvider fonts = new FontsProvider();
     private LevelTracker levelTracker;
-    private Aimbot aimbot = Aimbot.INSTANCE;
-    private Debugger debugger = Debugger.INSTANCE;
+    private Aimbot aimbot = Aimbot.getInstance();
+    private Debugger debugger = Debugger.getInstance();
 
     private double windowWidth = Screen.getPrimary().getVisualBounds().getWidth();
     private double windowHeight = Screen.getPrimary().getVisualBounds().getHeight();

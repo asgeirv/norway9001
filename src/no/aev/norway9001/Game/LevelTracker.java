@@ -6,12 +6,22 @@ package no.aev.norway9001.Game;
 public final class LevelTracker
 {
 
-    public static final LevelTracker INSTANCE = new LevelTracker();
+    private static LevelTracker instance;
     private int currentLevel = 1;
 
     private LevelTracker()
     {
 
+    }
+
+    public static LevelTracker getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new LevelTracker();
+        }
+
+        return instance;
     }
 
     public int getCurrentLevel()
